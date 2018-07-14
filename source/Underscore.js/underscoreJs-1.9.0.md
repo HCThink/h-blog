@@ -1,5 +1,3 @@
-<link href="../../../../lib/rainbow/solarized-dark.css" rel="stylesheet">
-
 ## 源码阅读
 
 > lib           :       underscore
