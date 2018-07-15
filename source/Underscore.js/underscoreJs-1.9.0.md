@@ -8,7 +8,7 @@
 
 > time          :       2017-08-22 14:14:36
 
-> homepage      :       [https://hcthink.github.io/HBook/](https://hcthink.github.io/HBook/)
+> homepage      :       [https://hcthink.github.io/h-blog/](https://hcthink.github.io/h-blog/)
 
 > code source   :       [https://github.com/jashkenas/underscore/blob/v1.9.0/underscore.js](https://github.com/jashkenas/underscore/blob/v1.9.0/underscore.js)
 
@@ -34,13 +34,6 @@
 
 6. part 6: [Utility Functions](./underscoreJs-1.9.0/Utility-function.md)
 
----
-
-## 源码部分测试
-
-1. is-fun
-> page test: [is-fun.html](./lib/is-fun.html).
-> node test: [is-fun.js](./lib/is-fun.js).
 
 ---
 
@@ -109,7 +102,7 @@
     var Ctor = function() {};
 
     // Create a safe reference to the Underscore object for use below.
-    // TODO
+    // TODO-down
     /**
      * 1. 为什么很多库的入口设计成函数?
      *   设计成函数可以有多种调用方式: _.xxx , _().xxx, 前端库使用上往往偏向直接使用, 尽管内部为了做属性隔离也是使用 new. 但是并不会直接这么做.
@@ -268,6 +261,7 @@
         return result;
     };
 
+    // 函数生成器, 返回一个延迟之行函数. 参数在不同的时间点传入. 所谓函数式编程
     var property = function(key) {
         return function(obj) {
             return obj == null
@@ -323,14 +317,33 @@
     // 参考: ## Utility Functions
     // link: ./underscoreJs-1.9.0/Utility-function.md
 
+    // Add a "chain" function. Start chaining a wrapped Underscore object.
+    /**
+     * 链式有两个操作: 
+     * 1. 返回结果 un 化.
+     * 2. 将 un 化的对象 _chain 设为 true, 保证能继续链式.
+     */
+    _.chain = function(obj) {
+        var instance = _(obj);
+        instance._chain = true;
+        return instance;
+    };
 
     // OOP
     // ---------------
+    // 以下注释说明了 un 库 oop 化的思路, 官方注释一语中的
     // If Underscore is called as a function, it returns a wrapped object that
     // can be used OO-style. This wrapper holds altered versions of all the
     // underscore functions. Wrapped objects may be chained.
 
     // Helper function to continue chaining intermediate results.
+    /**
+     *  函数依据 _chain 判断是否对结果进行 un 化. 实际上这是一个好办法. 但是对于 un 库来讲, 大多数时候没必要, 原因在于这样会导致返回值是一个 un 对象, un 是一个工具库[工具库链式需求不是特别多], 不同于 dom 库.
+     * 
+     * 因此 un 没有给所有对象手动设置 _chain 为 ture, 默认的 false 是直接返回操作结果,而不具链式调用
+     * 
+     * 如果启用了链式, 会怎样呢? 看: chain 方法.
+     */ 
     var chainResult = function(instance, obj) {
         return instance._chain
             ? _(obj).chain()
@@ -339,7 +352,8 @@
 
     // Add your own custom functions to the Underscore object.
     /**
-     * 将所有的静态操作同步到原型上. 并且做了包装. 添加了链式操作. 实际上这里开了一个切面
+     * 将所有的静态操作同步到原型上. 并且做了包装.
+     * un 的绝大部分操作都提供了 函数式 和面向对象 两种调用方式, 如下就是批量 oop 化的关键
      */
     _.mixin = function(obj) {
         /*
@@ -348,24 +362,43 @@
          *      desc: 返回一个对象的所有函数名的集合.
          */
         _.each(_.functions(obj), function(name) {
-            // TODO _[name] = obj[name] 这一步覆盖有必要么? 我在想
+            // TOOD-down _[name] = obj[name] 这一步覆盖有必要么? 我在想
             // 其实并没有覆盖. 而是说如果传入的 obj 有新的操作会同步到 _ 上, 恰巧这里的后面 _.mixin(_); 传入的也是 _ 本身
             var func = _[name] = obj[name];
             // 给原型依次赋值.但是做了包装.
             _.prototype[name] = function() {
-                // TODO
+                // 作为示例方法调用时,确保被操作的是实例化时传入的对象, 即 this._wrapped
                 var args = [this._wrapped];
                 push.apply(args, arguments);
+                /**
+                 *  _.xxx[静态方法] 作为工具操作,是不具备链式操作的特征的. 只有实例操作才有链式概念
+                 * 
+                 *  实际上大部分操作不具有 un 操作没有链式的概念. 你需要链式的话需要手动将 _chain 设置为 true.代码如下: 
+                 *      let op = _({
+                            '0': 1,
+                            '1': 2,
+                            length: 2,
+                        });
+                        op._chain = true;
+
+                        console.log(op.map((x) => x + 1).map((x) => x + 3));
+                 *  这样实际上是真的 un 链式操作, 实际上你可能会说, 不设置 _chain 也可以链式 map, 没错, 但是这不是 un 提供的 map ,而是数组原生的 map 操作.
+                 * un 对象上的 map 进行了重写, 他可以兼容类数组对象, map 返回的结果是一个 js 数组.急需调用 map 其实是数组的 map 操作
+                 * 
+                 * 这里把上下文和操作结果提供给 chainResult, 不妨进该方法看看
+                 */
                 return chainResult(this, func.apply(_, args));
             };
         });
     };
 
     // Add all of the Underscore functions to the wrapper object.
-    // 关键操作,将[_]上的函数进行迁移
+    // 关键操作,将[_]上的函数批量迁移 _ 的示例上
     _.mixin(_);
 
+    // _ 实例专有方法. _终究是个函数, 上面挂在数组操作没有意义. 但是_(), 或者 new _ 都会返回一个对象, 如果 _wrapped 是数组, 则能完成这些操作
     // Add all mutator Array functions to the wrapper.
+    // 改变原数组的操作
     _.each([
         'pop',
         'push',
@@ -377,31 +410,41 @@
     ], function(name) {
         var method = ArrayProto[name];
         _.prototype[name] = function() {
+            /**
+             * 真正完成操作的是被初始化的 _wrapped. 
+             * 实际上这是个比较巧妙的方式, 类 jq , un 的库, 往往在入参上不做控制, 你可以传入很随意的类型. 这样就导致初始化必须忽略传入的对象. 于是这些库索性 直接用一个内部变量 _wrapped 接受.
+             * 所有成员方法调用的时候, 都针对 _wrapped 进行操作.
+             */
             var obj = this._wrapped;
             method.apply(obj, arguments);
+            // TODO why delete obj[0]? 
             if ((name === 'shift' || name === 'splice') && obj.length === 0)
                 delete obj[0];
             return chainResult(this, obj);
         };
     });
 
+    // _wrapped 引用. _wrapped 是调用 _(obj) 的入参 obj, 他为_ 的实例所有.无法直接指向
     // Add all accessor Array functions to the wrapper.
     _.each([
         'concat', 'join', 'slice'
     ], function(name) {
         var method = ArrayProto[name];
         _.prototype[name] = function() {
+            // 这几个操作不影响原数组, 所以要把执行结果传入 chainResult
             return chainResult(this, method.apply(this._wrapped, arguments));
         };
     });
 
     // Extracts the result from a wrapped and chained object.
+    // _wrapped 引用. _wrapped 是调用 _(obj) 的入参 obj, 为 _ 的实例所有.无法直接指向, 借助 this 指向, 所以 value 设计为函数
     _.prototype.value = function() {
         return this._wrapped;
     };
 
     // Provide unwrapping proxy for some methods used in engine operations
     // such as arithmetic and JSON stringification.
+    // 覆写几个 object 操作
     _.prototype.valueOf = _.prototype.toJSON = _.prototype.value;
 
     _.prototype.toString = function() {

@@ -8,7 +8,7 @@
 
 > time          :       2017-08-22 14:14:36
 
-> homepage      :       [https://hcthink.github.io/HBook/](https://hcthink.github.io/HBook/)
+> homepage      :       [https://hcthink.github.io/h-blog/](https://hcthink.github.io/h-blog/)
 
 > code source   :       [https://github.com/jashkenas/underscore/blob/v1.9.0/underscore.js](https://github.com/jashkenas/underscore/blob/v1.5.0/underscore.js)
 

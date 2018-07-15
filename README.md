@@ -1,3 +1,12 @@
 # hooper's blog.
 
-就是想写点东西.
+自律, 警醒.
+
+----
+
+## 源码阅读
+
+1. 函数式编程 
+
+UnderscoreJs: [Underscore](./source/Underscore.js/readme.md)
+

@@ -1,6 +1,6 @@
 ##  Collection Functions
 
-> 集合操作
+> 集合操作: 涵盖数组, 类数组, 部分操作和针对对象.
 
 ```javascript
 // The cornerstone, an `each` implementation, aka `forEach`.
