@@ -44,4 +44,7 @@ jspm_packages
 .vs
 .vscode
 
+# TODO
 ._git_*
+.TODO-*
+TODO*

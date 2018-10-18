@@ -1,0 +1,14 @@
+{
+  "name": "polymorphism",
+  "version": "1.0.0",
+  "description": "基本处理模型",
+  "main": "index.js",
+  "scripts": {
+    "build": "tsc --outdir ./build -w -t es2017 ./src/main.ts",
+    "start": "node --experimental-modules  --loader ~/.node.custom-loader.mjs build/main.js",
+
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}

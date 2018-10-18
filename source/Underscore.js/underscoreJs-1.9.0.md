@@ -71,7 +71,7 @@
     var previousUnderscore = root._;
 
 
-    /*  
+    /*
         有一长段的代码去获取 js api 操作的引用, 数组对象的基础 api 引用.
         在支持的环境,可以用于校验传入的对象操作的合法性, 并利用该操作完成作业
             if (nativeReduce && obj.reduce === nativeReduce) {
@@ -114,12 +114,12 @@
      *  un 库的大多数操作和 cd 都指定了明确的 context
      *
      * 如果把函数入口设计成函数, 在调用上更加友好, 但是函数需要兼容更多的情况. 大致的使用情况分为这样几种.
-     *  1. 直接调用. 比如 _(obj), 如果这个 obj 是一个 un 对象, 则会直接返回, 
+     *  1. 直接调用. 比如 _(obj), 如果这个 obj 是一个 un 对象, 则会直接返回,
      *  如果传入的 obj 不是, 将它想办法挂载到 un 对象上, 最直接的做法就是: new _(obj), 以得到一个 un 对象
      *  2. new _(obj), 则直接挂载到 this 上.
-     * 
-     * 如下代码就较好的处理的 库 入口问题. 
-     * 
+     *
+     * 如下代码就较好的处理的 库 入口问题.
+     *
      * 衍生的一个思路是处理了 一个有 this 的函数如何防止直接调用导致 this '泄露' 的问题.
      */
     var _ = function(obj) {
@@ -152,8 +152,8 @@
     // Internal function that returns an efficient (for current engines) version
     // of the passed-in callback, to be repeatedly applied in other Underscore
     // functions.
-    // 参考: readme.md : 中对 optimizeCb 的说明 
-    // 函数执行器.  
+    // 参考: readme.md : 中对 optimizeCb 的说明
+    // 函数执行器.
     var optimizeCb = function(func, context, argCount) {
         if (context === void 0)
             return func;
@@ -203,7 +203,7 @@
     // This accumulates the arguments passed into an array, after a given index.
     /*
         模拟剩余参数
-    */    
+    */
     var restArgs = function(func, startIndex) {
         startIndex = startIndex == null
             ? func.length - 1
@@ -234,7 +234,7 @@
 
     // An internal function for creating a new object that inherits from another.
     /**
-     * 思路: 借助一个中间件函数承接 prototype. 然后返回这个中间件实例, 之后再重置 prototype.简版继承   
+     * 思路: 借助一个中间件函数承接 prototype. 然后返回这个中间件实例, 之后再重置 prototype.简版继承
      * 也可以借鉴 Object.create 的 polyfill. 他利用了对象的 __proto__ 属性引用了对象的原型这一特性
      * 这样不必维护一个空函数,并且维护函数的原型.
      * 缺点是: __proto__ 的支持度有些问题.
@@ -319,7 +319,7 @@
 
     // Add a "chain" function. Start chaining a wrapped Underscore object.
     /**
-     * 链式有两个操作: 
+     * 链式有两个操作:
      * 1. 返回结果 un 化.
      * 2. 将 un 化的对象 _chain 设为 true, 保证能继续链式.
      */
@@ -339,11 +339,11 @@
     // Helper function to continue chaining intermediate results.
     /**
      *  函数依据 _chain 判断是否对结果进行 un 化. 实际上这是一个好办法. 但是对于 un 库来讲, 大多数时候没必要, 原因在于这样会导致返回值是一个 un 对象, un 是一个工具库[工具库链式需求不是特别多], 不同于 dom 库.
-     * 
+     *
      * 因此 un 没有给所有对象手动设置 _chain 为 ture, 默认的 false 是直接返回操作结果,而不具链式调用
-     * 
+     *
      * 如果启用了链式, 会怎样呢? 看: chain 方法.
-     */ 
+     */
     var chainResult = function(instance, obj) {
         return instance._chain
             ? _(obj).chain()
@@ -372,8 +372,8 @@
                 push.apply(args, arguments);
                 /**
                  *  _.xxx[静态方法] 作为工具操作,是不具备链式操作的特征的. 只有实例操作才有链式概念
-                 * 
-                 *  实际上大部分操作不具有 un 操作没有链式的概念. 你需要链式的话需要手动将 _chain 设置为 true.代码如下: 
+                 *
+                 *  实际上大部分操作不具有 un 操作没有链式的概念. 你需要链式的话需要手动将 _chain 设置为 true.代码如下:
                  *      let op = _({
                             '0': 1,
                             '1': 2,
@@ -384,7 +384,7 @@
                         console.log(op.map((x) => x + 1).map((x) => x + 3));
                  *  这样实际上是真的 un 链式操作, 实际上你可能会说, 不设置 _chain 也可以链式 map, 没错, 但是这不是 un 提供的 map ,而是数组原生的 map 操作.
                  * un 对象上的 map 进行了重写, 他可以兼容类数组对象, map 返回的结果是一个 js 数组.急需调用 map 其实是数组的 map 操作
-                 * 
+                 *
                  * 这里把上下文和操作结果提供给 chainResult, 不妨进该方法看看
                  */
                 return chainResult(this, func.apply(_, args));
@@ -411,13 +411,15 @@
         var method = ArrayProto[name];
         _.prototype[name] = function() {
             /**
-             * 真正完成操作的是被初始化的 _wrapped. 
+             * 真正完成操作的是被初始化的 _wrapped.
              * 实际上这是个比较巧妙的方式, 类 jq , un 的库, 往往在入参上不做控制, 你可以传入很随意的类型. 这样就导致初始化必须忽略传入的对象. 于是这些库索性 直接用一个内部变量 _wrapped 接受.
              * 所有成员方法调用的时候, 都针对 _wrapped 进行操作.
              */
             var obj = this._wrapped;
             method.apply(obj, arguments);
-            // TODO why delete obj[0]? 
+            // -TODO why delete obj[0]?
+            // 我提了 issue: https://github.com/jashkenas/underscore/issues/2773#issuecomment-423462381
+            // IE compatibility mode and IE < 9 have buggy Array shift() and splice() functions that fail to remove the last element, object[0], of array-like-objects even though the length property is set to 0.
             if ((name === 'shift' || name === 'splice') && obj.length === 0)
                 delete obj[0];
             return chainResult(this, obj);

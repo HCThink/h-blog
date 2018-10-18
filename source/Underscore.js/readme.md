@@ -14,7 +14,7 @@
 
 [last Version : 1.9.0](./underscoreJs-1.9.0.md)
 
-> 库相对简单, 暂时不做太详细解析. 待补充 
+> 库相对简单, 暂时不做太详细解析. 待补充
 
 [mid Version : 1.5.0](./underscoreJs-1.5.0.md)
 
@@ -24,7 +24,7 @@
 
 ## underscore 基础框架结构
 
-[Source](./underscoreJs-1.9.0.md#Source)
+[Source](./underscoreJs-1.9.0.md#source)
 
 ---
 
@@ -44,10 +44,11 @@
 ```javascript
 // underscop: [兼容 web 和 node, this 可以是 global
 // 此方式存在问题, 在严格模式下 全局的 this 指向一个空对象. 不推荐参考
+// lodash 式
 (function () {
 
 }.bind(this)());
-// }.call(this);
+// }.call(this));
 
 // 目前大多 underscore 都是这种, 可以兼容 web 和 node 等多种宿主环境
 (function () {
@@ -236,7 +237,7 @@ inject : function(obj, memo, iterator, context) {
 
 ```javascript
 // v 0.3.3
-if (obj && obj.reduce) return obj.reduce(_.bind(iterator, context), memo);    
+if (obj && obj.reduce) return obj.reduce(_.bind(iterator, context), memo);
 ```
 
 > v 0.5.1 的版本中, 对 reduce 做了进一步的校验. 因为有可能出现恶作剧的情况. 对象的 reduce 并非一个函数
@@ -392,9 +393,13 @@ api:
 > [http://www.css88.com/doc/underscore/](http://www.css88.com/doc/underscore/)
 > [http://www.liaoxuefeng.com/wiki/001434446689867b27157e896e74d51a89c25cc8b43bdb3000/001450370530539bc6e0e3dc02c4d3bb79993a8cde056b5000](http://www.liaoxuefeng.com/wiki/001434446689867b27157e896e74d51a89c25cc8b43bdb3000/001450370530539bc6e0e3dc02c4d3bb79993a8cde056b5000)
 
+>[https://yoyoyohamapi.gitbooks.io/undersercore-analysis/content/base/%E7%BB%93%E6%9E%84.html](https://yoyoyohamapi.gitbooks.io/undersercore-analysis/content/base/%E7%BB%93%E6%9E%84.html)
+
 source desc:
 > [http://www.css88.com/doc/underscore/docs/underscore.html#section-31](http://www.css88.com/doc/underscore/docs/underscore.html#section-31)
+>
 > [http://www.imooc.com/article/1566](http://www.imooc.com/article/1566)
+>
 > [noconfig: http://www.cnblogs.com/laoyu/p/5189750.html](http://www.cnblogs.com/laoyu/p/5189750.html)
 
 ---
