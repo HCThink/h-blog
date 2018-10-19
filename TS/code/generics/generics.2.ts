@@ -23,7 +23,7 @@ function createInstance<A extends Animal>(c: new () => A): A {
     return new c();
 }
 
-const nametag = createInstance(Lion).keeper.nametag;  // typechecks!
-const hasMask = createInstance(Bee).keeper.hasMask;   // typechecks!
+const nametag = createInstance(Lion).keeper.nametag;  // ZooKeeper!
+const hasMask = createInstance(Bee).keeper.hasMask;   // true!
 
 console.log(nametag, hasMask);

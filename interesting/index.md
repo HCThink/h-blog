@@ -1,5 +1,9 @@
 # interesting
 
+
+- 趣味： [有点意思](./interesting/hehe.js)
+
+
 - Q： if(aﾠ==1 && a== 2 && ﾠa==3) 返回 true
 
     [in 1](./in1.md)

@@ -13,7 +13,7 @@ function add(x: number, y: number): number {
     return x + y;
 }
 
-// 完整的函数定义应该是如下这样的， 尽管看起来是一个很蠢的语法。臃肿而啰嗦。
+// 完整的函数表达式定义应该是如下这样的， 尽管看起来是一个很蠢的语法。臃肿而啰嗦。
 let myAdd: (x: number, y: number) => number =
     function(x: number, y: number): number { return x + y; };
 
@@ -28,7 +28,7 @@ let myAdd: (baseValue: number, increment: number) => number =
 
 2. 形参实参严格匹配 & 可选参数 & 默认参数
 
-- 形参实参严格匹配： 基本上 TS 的形参和实参需要严格匹配， 体现在个数， 类型，顺序等等上，函数定义需要两个什么参数的参数， 你就必须传入两个对应类型的参数。
+- 形参实参严格匹配： 基本上 TS 的形参和实参需要严格匹配， 体现在个数， 类型，顺序等等上，函数定义需要两个某某类型的参数， 你就必须传入两个对应类型的参数。
 
 - 可选参数： TS 里我们可以在参数名旁使用 ?实现可选参数的功能, 可选参数必须位于所有必选参数之后
 ```typescript
@@ -39,15 +39,16 @@ function fn(a?: number, b: number): number {
 ```
 
 - 默认参数: 同 es6【undefined 触发默认值】, 如果某个参数有默认值，并且其后没有必选参数，则他等价于有初始化的可选参数。
-    带默认值的参数不需要放在必须参数的后面。
-    但如果默认参数不在末尾，是没法跳过默认参数的，你必须传入一个值占位。
-    如果你想让不在尾部的默认值产生作用，则需要传入 `undefined` 去触发默认值。
+
+   - 带默认值的参数不需要放在必须参数的后面。
+   - 但如果默认参数不在末尾，是没法跳过默认参数的，你必须传入一个值占位。
+   - 如果你想让不在尾部的默认值产生作用，则需要传入 `undefined` 去触发默认值。
 
 3. 剩余参数
 
 同 ES6 。
 
-当一个函数有剩余参数时，它被当做无限个可选参数。
+当一个函数有剩余参数时，它被当做任意个可选参数。
 
 
 4. this
@@ -66,11 +67,11 @@ global.length = 10;
 });
 ```
 
-ps： 怎么说吧，我认为这是 js 中比较糟粕的东西，但是不了解糟粕，你就没法避免他。总之这个问题不在本文讨论范畴。
+ps： 怎么说吧，我认为这是 js 中比较糟粕的东西，但是不了解糟粕，你就没法避免他。总之这个问题不在本文讨论范畴。
 
 TS 文档中有很长一段介绍剪头函数带来的 this 和 this 类型问题， 可以参考原文。 我的建议是，函数中不要出现 this， 如果需要一个可以 new 的函数类模板，就声明成 class。
 
-但是还有个问题： 如果讲 class 实例的方法作为参数传到函数中， 还是没法避免。
+但是还有个问题： 如果将 class 实例的方法作为参数传到函数中， 还是没法避免。
 ```typescript
 class A{
     name: 'A: { fn: function }';
@@ -90,7 +91,7 @@ fn(obj.f1.bind(obj));   // A {}
 
 5. Overload 重载
 
-js 本身就能接受任意个参数，实际上本身就支持某种意义上的重载。 但是 js 的重载有个很大的问题是： 重载逻辑没法分离，或者需要一个 switch 或者多 if 去做分离。实际上并不是很理想的重载。
+js 本身就能接受任意个参数，实际上本身就支持某种意义上的重载。 但是 js 的重载有个很大的问题是： 重载逻辑没法分离，或者需要一个 switch 或者多 if 去做分离。实际上并不是很理想的重载。
 
 函数或者方法重载有两个维度：（重载和形参的名字无关，形参只是占位，所以重载函数和位置强相关）。
 
@@ -115,15 +116,18 @@ function f1(x: string, y: boolean): string;
 // function pn(x, y): void {}
 // 逻辑体，非重载函数
 function f1(x, y): any {
-    if (x && typeof (x) === 'string' && !y) {
+    if (typeof (x) === 'string' && !y) {
         // f1Deal1(x);
-    } else if (x && typeof (x) === 'string' && y && typeof (y) === 'boolean') {
+    } else if (typeof (x) === 'string' && y && typeof (y) === 'boolean') {
         // f2Deal(x, y);
     } else {
         // ....
         // dealFefault()
     }
 }
+
+f1('JS');
+f1('TS', true);
 ```
 
 class 中的重载
@@ -135,9 +139,9 @@ class A{
     f1(x: string, y: boolean): string;
     // 逻辑体，非重载函数
     f1(x, y): any {
-        if (x && typeof(x) === 'string' && !y) {
+        if (typeof(x) === 'string' && !y) {
             // f1Deal1(x);
-        } else if (x && typeof (x) === 'string' && y && typeof(y) === 'boolean') {
+        } else if (typeof (x) === 'string' && y && typeof(y) === 'boolean') {
             // f2Deal(x, y);
         } else {
             // ....
@@ -163,6 +167,43 @@ export default class Tools {
         }
     }
 }
+```
+
+联合类型 配合 类型保护 下的重载[解决重载中非必要的 any 类型 和 需要断言 的问题, 上述 Tools.ts 确实需要 any 类型]
+```typescript
+// 重载函数
+function f1(x: number): string;
+function f1(x: boolean): string;
+function f1(x: string): string;
+// 逻辑体，非重载函数
+function f1(x: (number | string | boolean)): number | string | boolean | string[] {
+    let re: number | string | boolean | string[];
+
+    // 类型保护
+    if (typeof x === 'number') {
+        // 理论上联合类型这里不能使用 number 独有的操作，如果要使用， 需要断言。
+        // 这里能够不断言是 if 和 typeof 的类型保护产生的效果
+        re = x++;
+    } else if (typeof x === 'string') {
+        re = x.split('');
+    } else if (typeof x === 'boolean') {
+        re = !!x && 'success';
+    }
+    // 还不能支持类型保护，or 写法错误？
+    // switch(typeof x) {
+    //     case 'number': re = x++;
+    //         break;
+    //     case 'boolean': re = !!x && 'success';
+    //         break;
+    //     case 'string': re = x.split('');
+    //         break;
+    // }
+    return re;
+}
+
+console.log(f1(10));
+console.log(f1(!0));
+console.log(f1('typescript'));
 ```
 
 

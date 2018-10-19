@@ -2,8 +2,7 @@
  *  接口继承， 抽象类，
  */
 
-// 这个接口作为返回值描述，描述了用两个 number 类型的参数去实例化，然后返回一个 ClockInterface 对象。
-// 接口使用 new 关键字和类似构造入参 一级返回值类型描述。
+// 这个接口用于描述构造器
 interface ClockConstructor {
     new(hour: number, minute: number): ClockInterface;
 }
@@ -31,19 +30,26 @@ abstract class ClockInterfaceAbs implements ClockInterface{
     }
 }
 
+// 模拟时钟
 class DigitalClock extends ClockInterfaceAbs {
-    constructor(h: number, m: number) {
-        super(h, m);
-    }
+    // 如果没有扩展属性，可以省略，交给抽象了统一处理， 如果有 调用 super。
+    // constructor(h: number, m: number) {
+    //     super(h, m);
+    // }
     help() {}
 }
+
+// 数码时钟
 class AnalogClock extends ClockInterfaceAbs {
-    constructor(h: number, m: number) {
-        super(h, m);
-    }
     help() { }
 }
 
+/**
+ *
+ * @param ctor 构造函数： 由 ClockConstructor 描述并约束
+ * @param hour
+ * @param minute
+ */
 function createClock(ctor: ClockConstructor, hour: number, minute: number): ClockInterface {
     return new ctor(hour, minute);
 }

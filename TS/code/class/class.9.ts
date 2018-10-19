@@ -19,3 +19,5 @@ const f: A = new B();
 console.log(typeof f.p1);
 // error
 console.log(f.fn2);
+// right: 断言
+console.log((<B>f).fn2);

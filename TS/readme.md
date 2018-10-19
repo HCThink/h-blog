@@ -10,19 +10,25 @@
 - 类似反射机制
 - 泛型
 
-## [base](./base.md)
+### [base](./base.md)
 
-## [interface](./interface.md)
+### [interface](./interface.md)
 
-## [class](./class.md)
+### [class](./class.md)
 
-## [__综合使用案例__](./code/polymorphism/src/main.ts)
+### [__综合使用案例__](./code/polymorphism/src/)
 
-## [function](./function.md)
+- [目录](./code/polymorphism/src/)
+- [入口](./code/polymorphism/src/main.ts)
 
-## [泛型](./Generics.md)
+### [function](./function.md)
 
-## [高级类型](./advancedTypes.md)
+### [泛型](./Generics.md)
+
+### [高级类型](./advancedTypes.md)
+
+
+---
 
 
 [TODO](./TODO.md)

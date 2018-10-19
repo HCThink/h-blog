@@ -55,6 +55,7 @@ namespace AccessModifier2 {
     // 构造器 + 访问修饰符
     class A {
         private constructor() { }
+        // protected constructor() { }
 
         static Singleton(): A {
             // 可以在内部进行初始化
@@ -71,7 +72,7 @@ namespace AccessModifier2 {
 
     }
 
-    // error: private 构造不能再外部实例化。 类“A”的构造函数是私有的，仅可在类声明中访问。
+    // error: private, protected 构造不能再外部实例化。 类“A”的构造函数是私有的，仅可在类声明中访问。
     new A();
 
     A.Singleton().desc();

@@ -4,10 +4,10 @@
 
 基本场景：
 
-interface 很重要的一个作用，就是类型规范，简单来说就是用来描述变量，字面两结构，参数结构，返回值结构, 函数结构等等。
+interface 很重要的一个作用，就是类型规范，简单来说就是用来描述变量，字面量结构，参数结构，返回值结构, 函数结构等等。
 如果你需要强制别人提供给你一个格式固定的数据，那么就声明一个接口去约束这种传递关系。
 
-接口如果不能被实现作用将会大大降低，作为可实现的接口，他可以描述非常抽象的级别。后面会有代码去说明。
+类规范：作为类可实现的接口，他可以描述非常抽象的级别。后面会有代码去说明。
 
 问题：
 
@@ -35,7 +35,9 @@ printLabel(myObj);
 let myObj: LabelledValue = { label: "Size 10 Object", a: 1 };
 ```
 
-对数据的这种强约束可以避免很多问题，实际上大多数时候我们在设计之初完全能够理清楚自己需要什么。但是如果是特殊情况呢？ typescript 提供了几种方案去跳过, 断言部分提供了思路。我们再梳理一次.(仅仅列举赋值时的情况，函数参数，返回值等凡事可以用接口约束的场景都可以类推)
+对数据的这种强约束可以避免很多问题，实际上大多数时候我们在设计之初完全能够理清楚自己需要什么。但是如果是特殊情况呢？ typescript 提供了几种方案去跳过
+
+断言部分提供了思路。我们再梳理一次.(仅仅列举赋值时的情况，函数参数，返回值等凡事可以用接口约束的场景都可以类推)
 
 ```typescript
 interface LabelledValue {
@@ -46,7 +48,7 @@ interface LabelledValue {
 let t1: LabelledValue = <LabelledValue>{ label: '', b: 1 };
 let t2: LabelledValue = { label: '', b: 1 } as LabelledValue;
 
-// 这可能会让你感到惊讶，它就是将这个对象赋值给一个另一个变量： 因为 squareOptions不会经过额外属性检查，所以编译器不会报错。
+// 这可能会让你感到惊讶，它就是将这个对象赋值给一个另一个变量： 因为 temp 不会经过额外属性检查，所以编译器不会报错。
 let temp = { label: '', b: 1 };
 let t3: LabelledValue = temp;
 
@@ -149,7 +151,10 @@ class Clock implements ClockConstructor {
 
 ```typescript
 interface Counter {
+    // 函数体
     (start: number): string;
+
+    // 函数静态部分
     interval: number;
     reset(): void;
 }
@@ -176,7 +181,7 @@ c.interval = 5.0;
 
 > 当你有一个庞大的继承结构时这很有用，但要指出的是你的代码只在子类拥有特定属性时起作用。 这个子类除了继承至基类外与基类没有任何关系
 
-这太扯淡了， 完全不能认同， 参考 java 。
+这太扯淡了， 完全不能认同。
 ```typescript
 class Control {
     private state: any;
@@ -194,8 +199,8 @@ class TextBox extends Control {
     select() { }
 }
 
-// 错误：“Image”类型缺少“state”属性。
-class Image implements SelectableControl {
+// 错误：“Image”类型缺少“state”属性。 与 Button 不同， 没有继承到 Control 中的 state
+class Image implements SelectableControl {
     select() { }
 }
 
@@ -204,7 +209,7 @@ class Location {
 }
 ```
 
-8. 接口声明都是 public（如下不讨论数据接口）
+接口声明都是 public（如下不讨论数据接口）
 
 接口中声明的字段都是 public ，所以接口作为继承顶级规范的时候， 我会避免在里面声明属性, 只用做行为声明。
 
@@ -219,5 +224,3 @@ class Location {
 这就导致在接口中声明属性往往会给后面的设计带来比较大的麻烦， 而且会导致接口设计需要思索很多实例方面的情况，往往导致接口不够抽象。
 
 建议的做法是，如果可能，在抽象类中声明属性，并做初始化，这样既避免了每个实现类重复的构造赋值， 又能将相对具体的行为从接口中拿出来，同时访问控制逻辑也变得很容易。
-
-尽量避免在接口中声明属性，当然也看场景。

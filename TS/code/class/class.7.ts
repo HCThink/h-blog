@@ -19,9 +19,9 @@ namespace constructorType{
 
     let greeter1: Greeter = new Greeter();
     Greeter.standardGreeting = 'cahnge default';
-    console.log(greeter1.greet());  // Hello, there
+    console.log(greeter1.greet());  // cahnge default
 
-    // console.log(typeof Greeter);    // Greeter
+    console.log(typeof Greeter);    // function
 
     let greeterMaker: typeof Greeter = Greeter;
     greeterMaker.standardGreeting = "Hey there!";
@@ -30,7 +30,7 @@ namespace constructorType{
     // 类似反射的概念，但是 js 始终是函数式语言，函数式一等公民，所以这种情景下的反射并没有 java 中的反射给人感觉那么强大。
     // 因为我们可以直接修改 Greeter.standardGreeting。
     let greeter2: Greeter = new greeterMaker();
-    console.log(greeterMaker);
+    console.log(greeterMaker);              // [Function: Greeter]
     console.log(greeter2.greet());          // Hey there!
     // 反射之后 standardGreeting 已经被改变。
     console.log(new Greeter().greet());     // Hey there!
