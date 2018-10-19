@@ -200,7 +200,7 @@ class TextBox extends Control {
 }
 
 // 错误：“Image”类型缺少“state”属性。 与 Button 不同， 没有继承到 Control 中的 state
-class Image implements SelectableControl {
+class Image implements SelectableControl {
     select() { }
 }
 

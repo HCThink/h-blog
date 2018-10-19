@@ -81,6 +81,7 @@ if(aﾠ ==1 && a == 2 && ﾠa ==3) {
 // let ﾠa = 3;
 // https://stackoverflow.com/questions/48270127/can-a-1-a-2-a-3-ever-evaluate-to-true#
 // 这里三个是不同的变量，第一个和第三个 a 前后的空白字符不是空格，Unicode FFA0
+// 请注意if 语句中的奇怪间距。它是半宽度韩文=,=。这是一个 Unicode 空格字符，但是 ECMAScript 不将其解释为一个空格 —— 这意味着它是一个有效的标识符。因此有三个完全不同的变量，一个是a后加半宽度韩文，一个是a， 一个是a前加半宽度韩文。
 
 ```
 

@@ -32,9 +32,10 @@ JS 「特别之处」： [特别之处](./interesting/index.md)
 
 ## 源码阅读
 
-### 函数式编程库
+### 函数式编程库
 
 1. UnderscoreJs: [Underscore](./source/Underscore.js/readme.md)
+
 
 
 ---
@@ -68,5 +69,9 @@ JS 「特别之处」： [特别之处](./interesting/index.md)
 =======================================================================
 ```
 
-![wk](/resource/img/wk.png)
+
+> 节目的最后附上本人照片，以表诚意！
+
+![wk](./resource/img/wk.png)
+
 [...](./interesting/hehe.js)
