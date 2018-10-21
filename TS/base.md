@@ -306,3 +306,43 @@ x = y;
 目前为止，我们使用了兼容性，它在语言规范里没有定义。 在TypeScript里，有两种类型的兼容性：子类型与赋值。 它们的不同点在于，赋值扩展了子类型兼容，允许给 any 赋值或从 any 取值和允许数字赋值给枚举类型或枚举类型赋值给数字。
 
 语言里的不同地方分别使用了它们之中的机制。 实际上，类型兼容性是由赋值兼容性来控制的，即使在implements和extends语句也不例外。
+
+
+---
+
+
+## 声明合并
+
+令人吃惊的操作
+```typescript
+interface Box {
+    height: number;
+    width: number;
+}
+
+interface Box {
+    scale: number;
+    // error: 标识符“scale”重复
+    // scale: number;
+}
+
+class Box {
+    length: number;
+
+    // error: 接口的非函数的成员应该是唯一的。如果它们不是唯一的，那么它们必须是相同的类型。
+    // 如果两个接口中同时声明了同名的非函数成员且它们的类型不同，则编译器会报错
+    // width: string;
+    // 允许声明合并的不同声明体中存在同名的属性。
+    width: number;
+}
+
+// 标识符“Box”重复。
+// class Box {
+
+// }
+
+// 缺少属性“length”
+// let boxErr: Box = { height: 5, width: 6, scale: 10 };
+let box: Box = { height: 5, width: 6, scale: 10, length: 7 };
+console.log(box);
+```

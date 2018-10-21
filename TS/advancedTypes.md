@@ -193,4 +193,8 @@ console.log(test, ', ', testFn);
 
 9. this 多态性。
 
-实际上在继承结构中， this 依旧是动态寻址，依赖具体实现, 被类型约束。
+实际上在继承结构中， this 依旧是动态寻址，依赖具体实现, 被类型约束。原来怎么用这里怎么用
+
+10. 索引类型： [参考索引类型（Index types） 章节](https://www.tslang.cn/docs/handbook/advanced-types.html)
+
+11. 映射类型： TODO
