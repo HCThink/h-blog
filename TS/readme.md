@@ -32,23 +32,23 @@
 
 ### [高级类型](./advancedTypes.md)                （小部分未完成）
 
-## [modifier](./modifier.md)
+### [modifier](./modifier.md)
 
-## [module](./module.md)                （小部分未完成）
+### [module](./module.md)                （小部分未完成）
 
-## [namespace](./namespace.md) [模块和命名空间的取舍]
+### [namespace](./namespace.md) [模块和命名空间的取舍]
 
-## [mixins](./mixins.md)
+### [mixins](./mixins.md)
 
-## [modifier](./modifier.md)
+### [modifier](./modifier.md)
 
-## [模块解析](./moduleResolution.md)                （小部分未完成）
+### [模块解析](./moduleResolution.md)                （小部分未完成）
 
-## [装饰器](./decorators.md)
+### [装饰器](./decorators.md)
 
-## [javascript 文件类型检查](./fileTypeChecking.md)
+### [javascript 文件类型检查](./fileTypeChecking.md)
 
-## [update 2.7+](./update/readme.md)                （跟进+补充）
+### [update 2.7+](./update/readme.md)                （跟进+补充）
 
 ---
 
