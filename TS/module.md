@@ -154,3 +154,53 @@ console.log(exObj.PI);
 这种模式的核心是 `import id = require("...") `语句可以让我们访问模块导出的类型。 模块加载器会被动态调用（通过 require），就像下面if代码块里那样。 它利用了省略引用的优化，所以模块只在被需要时加载。 为了让这个模块工作，一定要注意 import定义的标识符只能在表示类型处使用（不能在会转换成JavaScript的地方）。
 
 为了确保类型安全性，我们可以使用typeof关键字。 typeof关键字，当在表示类型的地方使用时，会得出一个类型值，这里就表示模块的类型。
+
+
+// TODO 1. 可选的模块加载和其它高级加载场景, 2. 使用其它的JavaScript库
+
+
+---
+
+
+## 创建模块结构指导
+
+1. 尽可能地在顶层导出. 嵌套层次过多会变得难以处理，因此仔细考虑一下如何组织你的代码. 突出表现在两个点： 避免直接导出静态方法， 避免导出和命名空间重叠的代码组织方式。
+2. 如果仅导出单个 class 或 function，使用 export default.
+3. 如果要导出多个对象，把它们放在顶层里导出, 同时导入的时候，明确地列出导入的名字
+```typescript
+// MyThings.ts
+export class SomeType { /* ... */ }
+export function someFunc() { /* ... */ }
+
+// Consumer.ts
+import { SomeType, someFunc } from "./MyThings";
+let x = new SomeType();
+```
+4. 导出模块的同时不要重叠使用命名空间
+5. 批量导入
+```typescript
+// MyThings.ts
+export class Dog { ... }
+export class Cat { ... }
+export class Tree { ... }
+export class Flower { ... }
+
+// Consumer.ts
+import * as myLargeModule from "./MyLargeModule.ts";
+```
+
+
+## 使用重新导出进行扩展
+
+类似高阶函数，高阶组件的处理方案： 你可能经常需要去扩展一个模块的功能。 JS里常用的一个模式是JQuery那样去扩展原对象。 如我们之前提到的，模块不会像全局命名空间对象那样去 合并。 推荐的方案是 不要去改变原来的对象，而是导出一个新的实体来提供新的功能。
+
+方法实践上： 使用 extend 去扩展一个子类是最佳实践，分模块可以实现开闭。但是情分清： is A 和 has A。
+
+这是个恒久话题，继承很好用，但是同回调一样不能乱用，典型的例子是： 企鹅不该直接派生自可飞行的鸟类。
+
+
+## 错误的使用。
+
+- 文件的顶层声明是export namespace Foo { ... } （删除Foo并把所有内容向上层移动一层）
+- 文件只有一个export class或export function （考虑使用export default）
+- 多个文件的顶层具有同样的export namespace Foo { （不要以为这些会合并到一个Foo中！）

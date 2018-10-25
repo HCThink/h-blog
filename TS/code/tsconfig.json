@@ -1,0 +1,8 @@
+{
+    "compilerOptions": {
+        "target": "ES5",
+        "jsx": "preserve",
+        "experimentalDecorators": true,
+        "emitDecoratorMetadata": true
+    }
+}

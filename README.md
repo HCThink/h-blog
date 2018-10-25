@@ -32,7 +32,7 @@ JS 「特别之处」： [特别之处](./interesting/index.md)
 
 ## 源码阅读
 
-### 函数式编程库
+### 工具库
 
 1. UnderscoreJs: [Underscore](./source/Underscore.js/readme.md)
 

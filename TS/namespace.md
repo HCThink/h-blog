@@ -2,6 +2,7 @@
 
 > 代码组织方案之一。
 > 适合处理那种不足以份文件维护的代码量。
+> 命名空间对解决全局作用域里命名冲突来说是很重要的
 
 ---
 
@@ -12,7 +13,7 @@ namespace xxx {
 }
 ```
 
-1. 多 `namespace`
+2. 多 `namespace`
 
 - 单文件多
   单个文件可以重复定义 namespace ，但是同名 namespace 之间的数据只要 export 了就可以直接在其他同名命名空间下使用。
@@ -29,7 +30,7 @@ namespace xxx {
     [namespace.2.ts](./code/namespace/namespace.2.ts)
 
 
-2. namespace 别名： 场景不多，和 `import x = require...` 区分度不高。
+3. namespace 别名： 场景不多，和 `import x = require...` 区分度不高。
 ```typescript
 namespace Shapes {
     export namespace Polygons {

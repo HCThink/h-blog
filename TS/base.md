@@ -313,7 +313,8 @@ x = y;
 
 ## 声明合并
 
-令人吃惊的操作
+令人吃惊的操作: “声明合并”是指编译器将针对同一个名字的两个独立声明合并为单一声明。 合并后的声明同时拥有原先两个声明的特性。 任何数量的声明都可被合并；不局限于两个声明。
+
 ```typescript
 interface Box {
     height: number;
@@ -326,6 +327,7 @@ interface Box {
     // scale: number;
 }
 
+// three box ? fuck
 class Box {
     length: number;
 
@@ -345,4 +347,102 @@ class Box {
 // let boxErr: Box = { height: 5, width: 6, scale: 10 };
 let box: Box = { height: 5, width: 6, scale: 10, length: 7 };
 console.log(box);
+```
+
+TypeScript中的声明会创建以下三种实体之一：命名空间，类型或值。
+
+- 创建命名空间的声明会新建一个命名空间，它包含了用（.）符号来访问时使用的名字。
+- 创建类型的声明是：用声明的模型创建一个类型并绑定到给定的名字上。
+- 创建值的声明会创建在JavaScript输出中看到的值。
+
+![base.1](../resource/img/base.1.png)
+
+
+1. 接口声明合并
+
+> 综合来讲没有发现这个特性比较贴切的场景，无论是扩展，还是代码组织方面，都挺别扭的，而且比起声明合并，都有更好的方案。待发现
+
+接口的非函数的成员应该是唯一的。如果它们不是唯一的，那么它们必须是相同的类型，如上述代码。
+
+对于函数成员，每个同名函数声明都会被当成这个函数的一个重载。 同时需要注意，当接口 A与后来的接口 A合并时，后面的接口具有更高的优先级。
+
+```typescript
+interface Cloner {
+    clone(animal: Animal): Animal;
+}
+
+interface Cloner {
+    clone(animal: Sheep): Sheep;
+}
+
+interface Cloner {
+    clone(animal: Dog): Dog;
+    clone(animal: Cat): Cat;
+}
+
+// 这三个接口合并成一个声明： 注意每组接口里的声明顺序保持不变，但各组接口之间的顺序是后来的接口重载出现在靠前位置。
+interface Cloner {
+    clone(animal: Dog): Dog;
+    clone(animal: Cat): Cat;
+    clone(animal: Sheep): Sheep;
+    clone(animal: Animal): Animal;
+}
+```
+
+这个规则有一个例外是当出现特殊的函数签名时。 如果签名里有一个参数的类型是 单一的字符串字面量（比如，不是字符串字面量的联合类型），那么它将会被提升到重载列表的最顶端.....
+
+2.  命名空间的合并, 命名空间与类和函数和枚举类型合并 之类的。
+
+说实话，感觉这个语法没什么卵用，无论是从设计角度还是合理性上，没有理由将本身内聚的设计，写成分散的，但在使用上又是合并的。这部分可以参考原文：
+
+[声明合并, 模块扩展](https://www.tslang.cn/docs/handbook/declaration-merging.html)
+
+3. 合并命名空间和类: 实现部分模式
+
+   - 内部类：
+    ```typescript
+    class Album {
+        label: Album.AlbumLabel;
+    }
+    namespace Album {
+        export class AlbumLabel { }
+    }
+    ```
+
+   - 成员扩展: 创建一个函数稍后扩展它增加一些属性也是很常见的
+    ```typescript
+    function buildLabel(name: string): string {
+        return buildLabel.prefix + name + buildLabel.suffix;
+    }
+
+    namespace buildLabel {
+        export let suffix = "";
+        export let prefix = "Hello, ";
+    }
+
+    console.log(buildLabel("Sam Smith"));
+    ```
+    枚举同理
+
+4. 非法的合并
+
+TypeScript并非允许所有的合并。 目前，类不能与其它类或变量合并。 想要了解如何模仿类的合并，请参考 TypeScript的混入。
+
+5. 全局扩展
+```typescript
+// observable.ts
+export class Observable<T> {
+    // ... still no implementation ...
+}
+
+declare global {
+    interface Array<T> {
+        toObservable(): Observable<T>;
+    }
+}
+
+// 等价
+Array.prototype.toObservable = function () {
+    // ...
+}
 ```
