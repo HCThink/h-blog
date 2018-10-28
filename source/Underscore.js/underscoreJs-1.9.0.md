@@ -102,7 +102,6 @@
     var Ctor = function() {};
 
     // Create a safe reference to the Underscore object for use below.
-    // TODO-down
     /**
      * 1. 为什么很多库的入口设计成函数?
      *   设计成函数可以有多种调用方式: _.xxx , _().xxx, 前端库使用上往往偏向直接使用, 尽管内部为了做属性隔离也是使用 new. 但是并不会直接这么做.
