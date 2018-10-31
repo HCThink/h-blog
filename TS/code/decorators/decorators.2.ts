@@ -1,6 +1,5 @@
 'use strict';
 namespace decorators {
-
     function fnPlus(target, propertyKey: string, descriptor: PropertyDescriptor) {
         const oldFn = target[propertyKey];
         target[propertyKey + '_plus'] = target[propertyKey] =  (...param) => {

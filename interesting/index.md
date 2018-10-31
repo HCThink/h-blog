@@ -16,3 +16,8 @@
 - n 道 JavaScript 难题
 
   [in 3](./in3.md)
+
+
+- How to do
+
+  [in 4](./in4.md)

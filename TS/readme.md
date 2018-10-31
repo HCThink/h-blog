@@ -48,12 +48,14 @@
 
 ### [update 2.7+](./update/readme.md)                （跟进+补充）
 
+### [声明文件](./d.ts.md)
+
+### [配置文件](./tsconfig.md)
+
 ---
 
 ### [接入 & 迁移 & 构建](./TODO.md)
 ### [react](./TODO.md)
-### [声明文件](./TODO.md)
-### [配置文件](./TODO.md)
 
 
 [TODO](./TODO.md)

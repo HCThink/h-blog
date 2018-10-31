@@ -1,0 +1,39 @@
+{
+    "compileOnSave": true,
+    "compilerOptions": {
+        "outDir": "dist",
+        "declarationDir": "dist",
+        "declaration": true,
+        "noImplicitAny": true,
+        "removeComments": true,
+        "preserveConstEnums": true,
+        "sourceMap": true,
+        "diagnostics": false,
+        "traceResolution": false,
+        "alwaysStrict": true,
+        "strict": true,
+        "noUnusedLocals": false,
+        "noUnusedParameters": true,
+        "strictNullChecks": true,
+        "strictPropertyInitialization": true,
+        "resolveJsonModule": true,
+        "pretty": true,
+        "lib": ["es6"],
+        "module": "commonjs",
+        "types": ["node"]
+    },
+    "files": [
+        "src/index.ts"
+    ],
+    "include": [
+        "./src/**/*",
+        "./Typings/*.d.ts"
+    ],
+    "exclude": [
+        "node_modules",
+        "bower_components",
+        "jspm_packages",
+        "**/*.spec.ts",
+        "**/js-lib*"
+    ]
+}

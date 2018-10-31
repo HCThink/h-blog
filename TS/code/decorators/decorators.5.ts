@@ -2,6 +2,12 @@
 import "reflect-metadata";
 
 namespace decorators {
+    type paramDecorators = {
+        index: number,
+        method: string | symbol,
+        constructors: Function,
+    };
+
     // @ts-ignore
     const requiredMetadataKey = Symbol("required");
 
@@ -15,7 +21,7 @@ namespace decorators {
         fn() {}
 
         @validate
-        greet(loc, @required name: string) {
+        greet(p1, p2, p3, @required name: string, p5) {
             // loc 仅仅用于占位， 用来测试 required 的第三个参数。
             return "Hello " + name + ", " + this.greeting;
         }
@@ -23,10 +29,15 @@ namespace decorators {
 
     // 属性装饰器优先级更高
     function required(target: Object, propertyKey: string | symbol, parameterIndex: number) {
-        console.log(`method： ${<string>propertyKey}，第 ${parameterIndex} 个参数。`);
+        // console.log(`method： ${<string>propertyKey}，第 ${parameterIndex + 1} 个参数。`);
         // 可能有多个 属性装饰器， 所以需要去 push 到已有队列中。
-        let existingRequiredParameters: number[] = Reflect.getOwnMetadata(requiredMetadataKey, target, propertyKey) || [];
-        existingRequiredParameters.push(parameterIndex);
+        let existingRequiredParameters: paramDecorators[] = Reflect.getOwnMetadata(requiredMetadataKey, target, propertyKey) || [];
+        existingRequiredParameters.push({
+            index: parameterIndex,
+            method: propertyKey,
+            constructors: target.constructor,
+        });
+        debugger;
         Reflect.defineMetadata(requiredMetadataKey, existingRequiredParameters, target, propertyKey);
     }
 
@@ -34,11 +45,14 @@ namespace decorators {
     function validate(target: any, propertyName: string, descriptor: TypedPropertyDescriptor<Function>) {
         let method = descriptor.value;
         descriptor.value = function () {
-            let requiredParameters: number[] = Reflect.getOwnMetadata(requiredMetadataKey, target, propertyName);
+            let requiredParameters: paramDecorators[] = Reflect.getOwnMetadata(requiredMetadataKey, target, propertyName);
             if (requiredParameters) {
-                for (let parameterIndex of requiredParameters) {
-                    if (parameterIndex >= arguments.length || arguments[parameterIndex] === undefined) {
-                        throw new Error("Missing required argument.");
+                for (let { index, method, constructors } of requiredParameters) {
+                    if (index >= arguments.length || arguments[index] === undefined) {
+                        // 只是为了说明问题， 实际上 method 并非直接挂在 class 上的。
+                        // @ts-ignore
+                        throw (`${constructors.name}.${String(method)}[ ${constructors.name}.prototype.${String(method)} ] 第 ${index + 1} 个参数是必传参数，请提供。`);
+                        // throw new Error("Missing required argument.");
                     }
                 }
             }
@@ -49,5 +63,6 @@ namespace decorators {
 
     const greeter = new Greeter('greeter');
 
-    console.log(greeter.greet('', 'nice'));
+    // @ts-ignore
+    console.log(greeter.greet());
 }

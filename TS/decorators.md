@@ -217,6 +217,7 @@ descriptor.value = (...param) => {
 
 参考： [decorators5 ts](./code/decorators/decorators.5.ts)
 
+注： 执行方式： `tsc --target ES5 --experimentalDecorators --emitDecoratorMetadata decorators.5.ts && node decorators.5.js`
 
 10. 元数据
 
