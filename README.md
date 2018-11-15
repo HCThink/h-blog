@@ -17,10 +17,15 @@ __PS：如有问题，或者错误，欢迎提 ISSUE ，共同成长，稍后同
 
 - 看看 tsc 被用来干什么就知道他有多重要了 deno, angular/vue 高版本 ，白鹭...  不解释。
 
+
+2. 异步处理方案简史（cb， cps， thunk，deferred， promise，generator + co， async-await）
+
+- generator： [generator](./js/syncAndAsync/generator/readme.md)
+
+
 TODO
 
-2. typescript 设计模式
-3. 异步处理方案简史（cb， cps， thunk，deferred， promise，generator + co， async-await）
+1. typescript 设计模式
 
 ---
 
@@ -36,15 +41,18 @@ JS 「特别之处」： [特别之处](./interesting/index.md)
 
 ## 源码阅读
 
+### 框架
+
+- koa2：[koa2](./source/koa2/readme.md)
+
 ### 工具库
 
-1. UnderscoreJs: [Underscore](./source/Underscore.js/readme.md)
-2. lodash: [lodash](./source/Lodash/readme.md)      [待完善]
+- UnderscoreJs: [Underscore](./source/Underscore.js/readme.md)
+- lodash: [lodash](./source/Lodash/readme.md)      [待完善]
 
 TODO
 
 - CO
-- koa2
 - module[amd,cmd,umd]
 - Ramdajs
 - reflect-metadata
