@@ -1,0 +1,26 @@
+{
+  "name": "koa",
+  "version": "1.0.0",
+  "description": "",
+  "private": true,
+  "main": "index.js",
+  "scripts": {
+    "start": "node --experimental-modules  --loader ./script/custom-loader.mjs ./app.js",
+    "dev": "node --experimental-modules  --loader ./script/custom-loader.mjs ./app.js",
+    "debug": "ndb --experimental-modules  --loader ./script/custom-loader.mjs ./app.js",
+    "tree": "tree -I node_modules",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "koa": "^2.6.1",
+    "open": "^0.0.5"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/HCThink/h-blog.git"
+  },
+  "devDependencies": {},
+  "author": "hooper.echo@gmail.com",
+  "homepage": "https://github.com/HCThink/h-blog",
+  "license": "ISC"
+}

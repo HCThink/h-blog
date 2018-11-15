@@ -41,9 +41,13 @@ jspm_packages
 .DS_Store
 
 
+# vscode
 .vs
 .vscode
 
 # TODO
-_git_*
 TODO*
+_git_*
+
+# debug
+*.js.map

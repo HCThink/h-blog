@@ -40,7 +40,7 @@ Arr.join().split(',').map(fn)
 
 仅仅是另一种思路。
 
-1. 快速取整
+3. 快速取整
 
 ```js
 // api
@@ -145,6 +145,54 @@ greet(p1, p2, p3, @required name: string, p5) {
     console.log(Array.prototype.slice.call(arguments));
 }(1,2,3,4)
 ```
+
+10. 库的非 new 调用
+
+通常库遇到的问题往往是，用户不按照你想要的方式调用，特别是 new 的问题，很多代码中会存在一谢逻辑去校验用户是否是 new 调用。诸如：
+
+- 传统式
+
+```js
+var _ = function(obj) {
+    if (obj instanceof _)
+        return obj;
+    if (!(this instanceof _))
+        return new _(obj);
+    this._wrapped = obj;
+};
+```
+
+- class 式
+
+```js
+class Fn{}
+
+// TypeError: Class constructor Fn cannot be invoked without 'new'
+Fn();
+```
+
+- 船新 api： [new.target](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/new.target)
+
+```js
+function Foo() {
+    if (!new.target) throw "Foo() must be called with new";
+    console.log("Foo instantiated with new");
+}
+
+new Foo(); // logs "Foo instantiated with new"
+Foo(); // throws "Foo() must be called with new"
+
+
+// new.target 在构造中
+class A {
+    constructor() {
+        console.log(new.target.name);
+    }
+}
+
+new A();        // A
+```
+
 
 ### 参考 & 感谢
 
