@@ -13,8 +13,8 @@ next()方法返回一个对象，这个对象包含两个属性：value 和 done
 
 ## 典型场景
 
-- [co](../../../source/co/readme.md)    // TODO
-- [async/await](../async-await/readme.md)    // TODO
+- [co](../../../source/co/readme.md)
+- [async/await](../async-await/readme.md)
 
 依赖 async 的上层库和应用不胜枚举，比如 koa
 
@@ -81,7 +81,7 @@ yield 仅仅比 展开运算符: `...`, 逗号： `,` 的优先级高，所以�
 
 注意，不是要说整个 generator 的出入参，而是 yield 和 next，这个问题，其实困扰我蛮久的，原因是 generator 和传统 js 的函数调用区别很大， 如果你很熟悉普通函数调用的出入参,在这里往往转不过弯。
 
-- 返回: next() 返回的 Generator 对象， 其中 value 则是 yield 表达式的值。
+- 返回: next() 返回类 `{ done: boolean, value: any  }` 对象， 其中 value 则是 yield 表达式的值。
 
 实际上返回会好理解一些，当我们执行 generator 函数之后获得一个 Generator 对象当我们第一次调用 GeneratorObj.next() 时，函数才会开始执行，直到第一个 yield 表达式执行完成， 并将 yield 表达式结果提供给 next 进行返回。【注意 yield 表达式此时开始执行】，然后进入中断。
 
@@ -222,17 +222,15 @@ function* generator(i){
 
 ## 注意点
 
-1. next 的参数会作为上一条执行的  yield 语句的返回值。
-2. `let first = yield 1;` 中 first 不是直接赋值为 yield 表达式的值， 而是 下次 next 传入的值。
-3. 生成器函数不能当做构造器使用。
-
+1. next 的参数会作为上一条执行的  yield 语句的返回值: `let first = yield 1;` 中 first 不是直接赋值为 yield 表达式的值， 而是 下次 next 传入的值。
+2. 生成器函数不能当做构造器使用。
 ```js
 function* f() {}
 var obj = new f; // throws "TypeError: f is not a constructor"
 ```
-4. yield 表达式是立即执行的，并且返回表达式值， 如果 yield 表达式是异步的，你需要在恰当的时机触发 next 才能达到 async 的执行顺序。在『重要问题 generator & 异步』中有详细讲解
-5. generator 和异步没有关系，其机制也没关系。只是配合 generator + 执行器 可以'同步化'处理异步, Generator函数是ES6提供的一种异步编程解决方案
-6. “中断”才是Generator的本质 ———— 只有Generator能让一段程序执行到指定的位置先中断，然后再启动，再中断，再启动。这和异步不同。
+3. yield 表达式是立即执行的，并且返回表达式值， 如果 yield 表达式是异步的，你需要在恰当的时机触发 next 才能达到 async 的执行顺序。在『重要问题 generator & 异步』中有详细讲解
+4. generator 和异步机制不同，只是配合 generator + 执行器可以 '同步化' 处理异步, Generator 函数是ES6提供的一种异步编程解决方案
+5. “中断”是 Generator 的重要特征 ———— Generator 能让一段程序执行到指定的位置先中断，启动。
 
 
 
@@ -250,7 +248,7 @@ function *gen(p) {
 }
 
 function fn(p) {
-	return Math.random() * p;
+    return Math.random() * p;
 }
 ```
 
@@ -311,10 +309,10 @@ if (node.name === "regeneratorRuntime" && useRuntimeRegenerator) {
 }
 ```
 
-继续跟进到 `babel-runtime-corejs2/regenerator/index.js, babel-runtime/regenerator/index.js` 文件中, 两个文件均只有一行代码： `module.exports = require("regenerator-runtime");` 都使用了 fackbook 的
-[regenerator](https://github.com/facebook/regenerator/tree/master/packages/regenerator-runtime)
+继续跟进到 `babel-runtime-corejs2/regenerator/index.js, babel-runtime/regenerator/index.js` 文件中, 两个文件均只有一行代码： `module.exports = require("regenerator-runtime");` 都使用了 fackbook 的 regenerator
 
-[regenerator 源码分析参考](../../../source/regenerator/readme.md)    // TODO
+- [regenerator](https://github.com/facebook/regenerator/tree/master/packages/regenerator-runtime)
+- [regenerator 源码分析参考](../../../source/regenerator/readme.md)
 
 
 
@@ -335,7 +333,7 @@ if (node.name === "regeneratorRuntime" && useRuntimeRegenerator) {
 
 ### 协程
 
-传统的编程语言，早有异步编程的解决方案（其实是多任务的解决方案）。其中有一种叫做"协程"（coroutine），意思是多个线程互相协作，完成异步任务， 这和普通的抢占式线程有所不同。
+传统的编程语言，早有多任务的解决方案，其中有一种叫做"协程"（coroutine），意思是多个线程互相协作，完成异步任务， 这和普通的抢占式线程有所不同。
 
 JS 中 generator 就类似一个语言层面实现的非抢占式的轻量级"线程"。 线程包含于进程，而协程包含于线程
 
@@ -343,7 +341,7 @@ JS 中 generator 就类似一个语言层面实现的非抢占式的轻量级"�
 - 不需要多线程的锁机制
 - 线程由系统控制切换，协程是由用户控制切换。
 
-从更高的层面来讲，协程和多线程是两种解决“多任务”编程的技术。多线程使得同一时刻可以有多个线程在执行，不过需要在多个线程间协调资源，因为多个线程的执行进度是“不可控”的。而协程则避免了多线程的问题，同一时刻实质上只有一个“线程”在执行，所以不会存在资源“抢占”的问题。
+从更高的层面来讲，协程和多线程是两种解决“多任务”编程的技术。多线程使得 '同一时刻貌似' 有多个线程在并发执行，不过需要在多个线程间协调资源，因为多个线程的执行进度是“不可控”的。而协程则避免了多线程的问题，同一时刻实质上只有一个“线程”在执行，所以不会存在资源“抢占”的问题。
 
 不过在 JS 领域，貌似不存在技术选择的困难，因为 JS 目前还是“单线程”的，所以引入协程也是很自然的选择吧。
 
@@ -379,7 +377,7 @@ js 的生成器也是一种特殊的协程，它拥有 yield 原语，但是却�
 
 ### 真.协程
 
-所谓的真协程是相对 generator 而言的， node-fibers 库提供了对应的实现，我们用一个例子部分代码说明二者区别
+所谓的真协程是相对 generator 而言的， node-fibers 库提供了对应的实现，我们用一个例子部分代码说明二者区别
 
 ```js
 import Fiber from 'fibers'
@@ -407,7 +405,7 @@ fibersCo(() => {
 
 通过这个代码可以发现，在第一次中断被恢复的时候，恢复的是一系列的执行栈！从栈顶到栈底依次为：foo1 => getSum => fibersCo 里的匿名函数；而使用生成器，我们就无法写出这样的程序，因为 yield 原语只能在生产器内部使用, SO
 
-> __无论什么时候被恢复，都是简单的恢复在生成器内部，所以说生成器是不用开新栈滴。__
+> __无论什么时候被恢复，都是简单的恢复在生成器内部，所以说生成器的中断是不开调用栈滴。__
 
 
 
@@ -441,15 +439,27 @@ generator 机制和异步有所不同， Generator 和普通函数本质区别�
 
 - [co 源码分析](../../../source/co/readme.md)
 
+4. 优势： 异常捕获。 generator 的异常捕获模型，优于 promise。
+```js
+function* gen(x){
+  try {
+    var y = yield x + 2;
+  } catch (e){
+    console.log(e);
+  }
+  return y;
+}
+```
+
 
 ### generator 的 yield 会产生调用函数栈么？
 
-因为 yield 原语只能在生产器内部使用, 所以无论什么时候被恢复，都是简单的恢复在生成器内部。所以说生成器是不用开新栈滴
+因为 yield 原语只能在生产器内部使用, 所以无论什么时候被恢复，都是简单的恢复在生成器内部。所以说生成器的中断是不开调用栈滴。
 
-参考上述章节
+参考上述章节
 
-- [真.协程](#真.协程)
-- [中断 & 函数栈](#协程的中断:实际上是挂起的概念)
+- [真.协程](#真协程)
+- [中断/函数栈](#协程的中断-实际上是挂起的概念)
 
 
 
@@ -458,7 +468,7 @@ generator 机制和异步有所不同， Generator 和普通函数本质区别�
 async / await
 - [async / await](../async-await/readme.md)， [co](../../../source/co/readme.md)
 
-并发通信
+并发通信: 多个generator函数结合在一起，让他们独立平行的运行，并且在它们执行的过程中来来回回得传递信息
 - [csp : 并行（多个 generator 微线程通讯）](../csp/readme.md)
 
 

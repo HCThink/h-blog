@@ -47,6 +47,7 @@ JS 「特别之处」： [特别之处](./interesting/index.md)
 
 ### 工具库
 
+- delegates 委托: [delegates](./source/delegates/readme.md)
 - UnderscoreJs: [Underscore](./source/Underscore.js/readme.md)
 - lodash: [lodash](./source/Lodash/readme.md)      [待完善]
 
