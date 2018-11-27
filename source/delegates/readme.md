@@ -120,7 +120,7 @@ __TJ 已经不更新，此库慎用__
 
 ## koa 使用此库。
 
-[koa 源码分析](../koa/readme.md)
+[koa 源码分析](../koa2/readme.md)
 
 ## 参考 & 鸣谢
 
