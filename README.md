@@ -23,9 +23,15 @@ __PS：如有问题，或者错误，欢迎提 ISSUE ，共同成长，稍后同
 - generator： [generator](./js/syncAndAsync/generator/readme.md)
 
 
-TODO
+3. typescript 设计模式
 
-1. typescript 设计模式
+> [ 设计模式总览](./design/pattern/readme.md)
+
+
+创建型模式: 工厂（工厂，工厂方法，抽象工厂合并），建造者，原型，单例
+
+- 单例模式： [Singleton](./design/pattern/singleton/readme.md)
+
 
 ---
 
@@ -35,6 +41,7 @@ TODO
 趣味： [趣味](./interesting/hehe.js)
 
 JS 「特别之处」： [特别之处](./interesting/index.md)
+
 
 ---
 
@@ -58,6 +65,17 @@ TODO
 - Ramdajs
 - reflect-metadata
 
+
+---
+
+
+## 算法
+
+> 不设边界，前端也要精通算法
+
+### Leecode
+
+[leecode 算法 js 实现](./algorithm/leecode/readme.md)
 
 
 ---
