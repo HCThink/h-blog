@@ -22,7 +22,7 @@ console.log(reverse(1534269));
 
 
 /**
- * leecode 最佳解法
+ * leecode 耗时最少解法
  * @param {number} x
  * @return {number}
  */

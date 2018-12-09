@@ -22,15 +22,15 @@ function genRow(rowIndex) {
         }
         row = temp;
     }
-    
+
     return row;
 }
 
 
 /**
- * leecode 最佳解法
- * @param {*} nums 
- * @param {*} target 
+ * leecode 耗时最少解法
+ * @param {*} nums
+ * @param {*} target
  */
 function leeGenRow(k) {
     let results = Array(k + 1).fill(1)

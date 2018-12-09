@@ -42,13 +42,12 @@
 
 ### 创建模式
 
-1. [Singleton](./singleton/readme.md)
+1. [单例模式： Singleton](./singleton/readme.md)
+2. [工厂模式： Factory](./factory/readme.md)
 
 
 ### 参考·
 
-https://zhuanlan.zhihu.com/p/43283016
-
-https://www.cnblogs.com/hegx/p/6094604.html
-
-https://www.cnblogs.com/geek6/p/3951677.html
+- https://zhuanlan.zhihu.com/p/43283016
+- https://www.cnblogs.com/hegx/p/6094604.html
+- https://www.cnblogs.com/geek6/p/3951677.html

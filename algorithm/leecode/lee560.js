@@ -95,7 +95,7 @@ console.log(re);
 
 
 /**
- * leecode 最佳解法
+ * leecode 耗时最少解法
  * @param {number[]} nums
  * @param {number} k
  * @return {number}

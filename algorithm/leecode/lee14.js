@@ -31,7 +31,7 @@ console.log(longestCommonPrefix(['abdd', 'abdww', 'abdcdd']))
 
 
 /**
- * leecode 最佳解法
+ * leecode 耗时最少解法
  * @param {string[]} strs
  * @return {string}
  */

@@ -27,7 +27,7 @@ console.log(isPalindrome(21212))
 
 
 /**
- * leecode 最佳解法
+ * leecode 耗时最少解法
  * @param {number} x
  * @return {boolean}
  */

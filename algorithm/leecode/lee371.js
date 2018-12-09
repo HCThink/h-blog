@@ -17,7 +17,7 @@ console.log(f);
 
 
 /**
- * leecode 最佳解法
+ * leecode 耗时最少解法
  * @param {number} a
  * @param {number} b
  * @return {number}

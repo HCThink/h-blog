@@ -67,5 +67,5 @@ async function genReadmeMd () {
 
 genReadmeMd().then(([fileList, { length }]) => {
     console.log('自动输出完成');
-    console.log(`已完成：${length}, TODO：${fileList.length - length}.`);
+    console.log(`已完成：${length}, other：${fileList.length - length}.`);
 })

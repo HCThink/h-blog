@@ -34,7 +34,7 @@ console.log(count);
 
 
 /**
- * leecode  最佳解法
+ * leecode  耗时最少解法
  * @param {string} J
  * @param {string} S
  * @return {number}

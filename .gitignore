@@ -52,3 +52,32 @@ _git_*
 
 # debug
 *.js.map
+
+
+
+# 待删除
+
+algorithm/math/
+algorithm/sort/
+deno/
+engineering/
+interview/
+js/extends/
+design/pattern/factory/
+design/pattern/template.md
+design/thinking/
+js/syncAndAsync/async-await/
+js/syncAndAsync/csp/
+js/syncAndAsync/promise/
+js/syncAndAsync/thunk/
+
+js/type/
+node/
+source/RXJS/
+source/Ramdajs/
+source/co/
+source/koa2/code/koa-router/
+source/koa2/middleware/koa-router/
+source/module/
+source/reflect-metadata/
+source/regenerator/

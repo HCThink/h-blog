@@ -42,7 +42,7 @@ console.log(indexOf('hello', 'lg'));
 
 
 /**
- * leecode 最佳解法
+ * leecode 耗时最少解法
  * @param {string} haystack
  * @param {string} needle
  * @return {number}

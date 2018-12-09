@@ -57,7 +57,7 @@ console.log(re);
 
 
 /**
- * leecode 最佳解法
+ * leecode 耗时最少解法
  * @param {string} str
  * @return {string}
  */

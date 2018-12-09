@@ -82,7 +82,7 @@ console.log(JSON.stringify(li));
 
 
 /**
- * lee 最佳解法
+ * lee 耗时最少解法
  */
 function addTwoNumbers(l1, l2) {
     let carry = 0;

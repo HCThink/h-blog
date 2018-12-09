@@ -48,7 +48,7 @@ console.log(size);
 
 
 /**
- * leecode 最佳解法
+ * leecode 耗时最少解法
  * @param {string[]} emails
  * @return {number}
  */
