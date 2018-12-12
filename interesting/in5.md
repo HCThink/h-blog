@@ -349,3 +349,15 @@ Syntax-directed operations for runtime semantics make use of this shorthand by p
 [ECMAScript® 2019 : 5.2.3.4 ReturnIfAbrupt Shorthands](https://tc39.github.io/ecma262/#sec-returnifabrupt-shorthands)
 
 Invocations of abstract operations and syntax-directed operations that are prefixed by ? indicate that ReturnIfAbrupt should be applied to the resulting Completion Record.
+
+
+
+## 拓展
+
+- [] == ![]
+- [] == []
+- [] == false
+- [] == 0
+- [] == ''              // [注意转换过程，并不会转 numbe, 看下一题]
+- [] == '0'
+- {} == '0'
