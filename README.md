@@ -11,9 +11,18 @@ __PS：如有问题，或者错误，欢迎提 ISSUE ，共同成长，稍后同
 ----
 
 
+### 极力推荐
+
+- [深度解析 [] == ![]](./interesting/in5.md)
+- [TypeScript](./TS/readme.md)
+- [koa2](./source/koa2/readme.md)
+- [generator](./js/syncAndAsync/generator/readme.md)
+
+----
+
 ## 必备技能
 
-1. [typeScript](./TS/readme.md)
+1. [TypeScript](./TS/readme.md)
 
 - 看看 tsc 被用来干什么就知道他有多重要了 deno, angular/vue 高版本 ，白鹭...  不解释。
 

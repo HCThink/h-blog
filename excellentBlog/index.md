@@ -19,3 +19,8 @@
 
 - https://github.com/Jocs/jocs.github.io/issues/12
 - [荐]https://blog.csdn.net/shenlei19911210/article/details/61194617
+
+
+## 奇思妙想
+
+- [the e](https://github.com/eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee/eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee/blob/eeeeeeeeeeeeeeeeeeeeeeee/e.py)

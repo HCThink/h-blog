@@ -59,6 +59,7 @@ _git_*
 
 algorithm/math/
 algorithm/sort/
+algorithm/Array/
 deno/
 engineering/
 interview/
