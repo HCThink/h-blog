@@ -7,7 +7,7 @@
 
 ## 经验法，简称瞎蒙
 
-对于简短而罕见的写法，最好的方法就是经验法，基本原则就是瞎蒙，虽然听着有点扯淡，实际上这不失为一个好办法，对于一个比较陌生的问题，我们通过经验瞎几把猜一个「大众」答案：
+对于简短而罕见的写法，最好的方法就是经验法，基本原则就是瞎蒙，虽然听着有点扯淡，实际上这不失为一个好办法，对于一个比较陌生的问题，我们通过经验瞎几把猜一个「大众」答案：
 
 简单观察此题，我们发现题目想让一个 数组和他的 非 作比较， 从正常的思维来看，一个数和他的非，应该是不相等的。
 
@@ -16,7 +16,7 @@
 
 ## 反向操作法
 
-然而你看着面试官淫邪的笑容，突然意识到，问题并不简单，毕竟这家公司还可以，不会来这么小儿科的问题吧。 再转念一想，这 tm 的是 js 啊，毕竟 js 经常不按套路出牌啊。
+然而你看着面试官淫邪的笑容，突然意识到，问题并不简单，毕竟这家公司还可以，不会来这么小儿科的问题吧。再转念一想，这 tm 的是 js 啊，毕竟 js 经常不按套路出牌啊。
 
 > 于是你又大胆做出了一个假设： [] == ![] 是 true！
 
@@ -26,9 +26,9 @@
 
 ## 最终结论
 
-后面分析很长，涉及到大篇幅的 ECMAScript 规范的解读，冗长而枯燥，不想看的同学，可以在这里直接拿到结论
+后面分析很长，涉及到大篇幅的 ECMAScript 规范的解读，冗长而枯燥，不想看的同学，可以在这里直接拿到结论
 
-> [] == ![] -> [] == false -> [] == 0 -> [].valueOf() == 0 -> [].toString() == [] -> '' == 0 -> 0 == 0 -> true
+> `[] == ![]` -> `[] == false` -> `[] == 0` -> `[].valueOf() == 0` -> `[].toString() == []` -> `'' == 0` -> `0 == 0` -> `true`
 
 
 ## 分析
@@ -97,7 +97,7 @@ js 中能够转换为false的字面量是可枚举的，包含
 9. If Type(x) is Object and Type(y) is either String, Number, or Symbol, return the result of the comparison ToPrimitive(x) == y.
 10. Return false.
 
-依据规范 6， 7 可知，存在 bool 则会将自身 ToNumber 转换 [!ToNumber(x) 参考 花絮下的 ！ToNumber， 主要是讲解 ！的意思](#花絮) 并且这个过程是一定成功的【必定会返回一个 number 类型的值】
+依据规范 6， 7 可知，存在 bool 则会将自身 ToNumber 转换 [!ToNumber(x) 参考 花絮下的 ！ToNumber， 主要是讲解 ！的意思](#花絮) ! 前缀在最新规范中表示某个过程会按照既定的规则和预期的执行【必定会返回一个 number 类型的值，不会是其他类型，甚至 throw error】
 
 得到： `[] == !ToNumber(false)`
 
@@ -118,9 +118,9 @@ js 中能够转换为false的字面量是可枚举的，包含
 
 [ECMAScript® 2019 : 7.1.1ToPrimitive ( input [ , PreferredType ] )](https://tc39.github.io/ecma262/#sec-toprimitive)
 
-The abstract operation ToPrimitive converts its input argument to a non-Object type.[尝试转换为原始对象]
+The abstract operation ToPrimitive converts its input argument to a non-Object type.    [尝试转换为原始对象]
 
-If an object is capable of converting to more than one primitive type, it may use the optional hint PreferredType to favour that type. Conversion occurs according to the following algorithm:[如果一个对象可以被转换为多种原语类型, 则参考 PreferredType， 依据如下规则转换]
+If an object is capable of converting to more than one primitive type, it may use the optional hint PreferredType to favour that type. Conversion occurs according to the following algorithm.   [如果一个对象可以被转换为多种原语类型, 则参考 PreferredType， 依据如下规则转换]
 
 
 1. Assert: input is an ECMAScript language value.
@@ -130,9 +130,9 @@ If an object is capable of converting to more than one primitive type, it may us
     3. Else PreferredType is hint Number, let hint be "number".
     4. Let exoticToPrim be ? GetMethod(input, @@toPrimitive).
     5. If exoticToPrim is not undefined, then
-        - Let result be ? Call(exoticToPrim, input, « hint »).
-        - If Type(result) is not Object, return result.
-        - Throw a TypeError exception.
+        1. Let result be ? Call(exoticToPrim, input, « hint »).
+        2. If Type(result) is not Object, return result.
+        3. Throw a TypeError exception.
     6. If hint is "default", set hint to "number".
     7. Return ? OrdinaryToPrimitive(input, hint).
 3. Return input.
@@ -168,7 +168,9 @@ Return the value of the property whose key is propertyKey from this object[检�
         - 5.2.2 If Type(result) is not Object, return result.
 6. Throw a TypeError exception.
 
-上述过程说的很明白： 如果 hint is String，并且他的 value 是 string 或者 number【ToPrimitive 中给 hint 打的标签】,接下来的处理逻辑，3，4 步描述的已经很清楚了。步骤 5，则是依次处理放入 methodNames 的操作[这也解答了我一直以来的一个疑问，网上也有说对象转 string 的时候，是调用 tostring 和 valueof， 但是总是含糊其辞，哪个先调用，哪个后调用，以及是不是两个方法都会调用等问题总是模棱两可，一句带过 /手动狗头]。
+上述过程说的很明白： 如果 hint is String，并且他的 value 是 string 或者 number【ToPrimitive 中给 hint 打的标签】,接下来的处理逻辑，3，4 步描述的已经很清楚了。
+
+步骤 5，则是依次处理放入 methodNames 的操作[这也解答了我一直以来的一个疑问，网上也有说对象转 string 的时候，是调用 tostring 和 valueof， 但是总是含糊其辞，哪个先调用，哪个后调用，以及是不是两个方法都会调用等问题总是模棱两可，一句带过 /手动狗头]。
 
 #### 推论
 
@@ -178,7 +180,7 @@ Return the value of the property whose key is propertyKey from this object[检�
 
 接着调用 `OrdinaryToPrimitive(o, number)` 则进入 7.1.1.1OrdinaryToPrimitive 的步骤 4 ，然后进入步骤 5 先调用 valueOf，步骤 5.2.2 描述中如果返回的不是 Object 则直接返回，否则才会调用 toString。
 
-所以 `[] == 0` => `[].valueOf()[.toString()] == 0`. 我们接着来看 数组的 valueOf 方法, 请注意区分一点，js 里内置对象都继承的到 valueOf 操作，但是部分对象做了覆写， 比如 [String.prototype.valueOf](https://tc39.github.io/ecma262/#sec-string.prototype.valueof)，所以去看看 Array.prototype.valueOf 有没有覆写。
+所以 `[] == 0` => `[].valueOf()[.toString()] == 0`. 我们接着来看 数组的 valueOf 方法, 请注意区分一点，js 里内置对象都继承的到 valueOf 操作，但是部分对象做了覆写， 比如 [String.prototype.valueOf](https://tc39.github.io/ecma262/#sec-string.prototype.valueof)，所以去看看 Array.prototype.valueOf 有没有覆写。
 
 结果是没有，啪啪打脸啊，尼玛，于是乎我们看 Object.prototype.valueOf
 
@@ -197,7 +199,7 @@ This function is the %ObjProto_valueOf% intrinsic object.
 
 [ECMAScript® 2019 : 7.1.13ToObject ( argument )](https://tc39.github.io/ecma262/#table-13)
 
-![toObject](../resource/img/toObject.png)
+![toObject](../resource/img/ToObject.png)
 
 Object ： Return argument?!  这步算是白走了。我们接着看 toString，同样的我们要考虑覆写的问题。
 
@@ -210,15 +212,15 @@ Object ： Return argument?!  这步算是白走了。我们接着看 toString�
 3. If IsCallable(func) is false, set func to the intrinsic function %ObjProto_toString%.
 4. Return ? Call(func, array).
 
-可见调用了 join 方法【这里面还有个小故事，我曾经去滴滴面试，二面和我聊到这个问题，我说数组的 toString 调用了 join ，面试官给我说，你不要看着调用结果就臆测内部实现，这不是这样的..., 我就摇了摇头，结果止步二面，猎头反馈的拒绝三连： 方向不匹配，不适合我们，滚吧。😂 😂 😂】
+可见调用了 join 方法【ps： 这里面还有个小故事，我曾经去滴滴面试，二面和我聊到这个问题，我说数组的 toString 调用了 join ，面试官给我说，你不要看着调用结果就臆测内部实现，不是这样思考问题的...... 我就摇了摇头，结果止步二面，猎头反馈的拒绝三连： 方向不匹配，不适合我们，滚吧。😂 😂 😂 】
 
 通过非常艰辛的努力我们走到了这一步
 
 > `[].valueOf().toString() == 0` => `[].join() == 0` => `'' == 0`
 
-如果你也认真看到这一步，不妨在博客提个 issue 留下联系方式，交个朋友 ^_^。
+__如果你也认真看到这一步，不妨在博客提个 issue 留下联系方式，交个朋友 ^_^。__
 
-接着我们看到两边还是不同类型，所以类型转换还得继续， 我们回到 7.2.14Abstract Equality Comparison 的步骤 4 5 ,
+接着我们看到两边还是不同类型，所以类型转换还得继续， 我们回到 7.2.14 Abstract Equality Comparison 的步骤 4 5 ,
 
 - 4. If Type(x) is Number and Type(y) is String, return the result of the comparison x == ! ToNumber(y).
 - 5. If Type(x) is String and Type(y) is Number, return the result of the comparison ! ToNumber(x) == y.
@@ -262,13 +264,15 @@ StrUnsignedDecimalLiteral:::
 
 确认过眼神，是我搞不定的人！
 
-不过我们还有 Mozilla [Number("") // 0](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Number#%E8%BD%AC%E6%8D%A2%E6%95%B0%E5%AD%97%E5%AD%97%E7%AC%A6%E4%B8%B2%E4%B8%BA%E6%95%B0%E5%AD%97)
+不过我们还有 Mozilla : [Number("")      // 0](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Number#%E8%BD%AC%E6%8D%A2%E6%95%B0%E5%AD%97%E5%AD%97%E7%AC%A6%E4%B8%B2%E4%B8%BA%E6%95%B0%E5%AD%97)
 
 所以最终答案就转化为：
 
 > `'' == 0` => `0 == 0`
 
-哦，大哥，原来这 tm 就是惊喜啊！小弟我愿意... 愿意个鬼啊！
+
+__哦，大哥，原来这 tm 就是惊喜啊！小弟我愿意... 愿意个鬼啊！__
+
 
 
 ## Final answer
@@ -282,16 +286,16 @@ StrUnsignedDecimalLiteral:::
 - A： 我喜欢技术，我喜欢把她弄得一丝不挂。【ps： 网上很多帖子信口开河，说的东西全无依据，结果是看帖成了纠错的过程，还是自己来吧】
 
 - Q： 有人会认认真真看到这里么？
-- A： 被我面试过的同学里应该有人能认真看到这里。【ps：爱看不看】
+- A： 被我面试过的同学里应该有人能认真看到这里。【ps：爱看不看】
 
 - Q： 这么做有什么用啊？
 - A： 没用，下一个。【ps： 面试中也经常有人问我这个问题，我认为这本质上是你对自己定位的问题，你定位自己是前端，就学应用层，你定位自己是程序员，就看全栈，如果你定位自己是工程师，就看底层，看规范。工作五年以上的程序员，不应该问这个问题。【pss： 我定位自己就是爱好，于是我就瞎鸡儿看】】
 
 - Q： 工作中用的到么？ 工作这么忙哪来的时间？
 - A： pass.
--
+
 - Q： 这么写博客，累么？
-- A： 很累，我要查很多很多资料，还要甄别。一篇博客，起码三四天起。而且大家看起来也需要基础和成本，我也不知道能坚持多久。
+- A： 很累，我要查很多很多资料，还要甄别，很多英文文档，对我这个持有「大不列颠负十级的英语认证」的人来说，简直就是美利坚版诗经。一篇博客，起码三四天起。而且大家看起来也需要基础和成本，我也不知道能坚持多久。
 
 - Q：...
 - A：...
@@ -321,7 +325,7 @@ Syntax-directed operations for runtime semantics make use of this shorthand by p
 
 - Perform ! SyntaxDirectedOperation of NonTerminal.
 
-大意是： !后面的语法操作的调用永远不会返回突然的完成，我理解是一定会执行一个预期的结果类型，执行步骤就是 上述 1， 2， 3步骤。 ！ToNumber 描述的是 一定会讲操作数转换为 number 类型并返回 val.[[value]]
+大意是： !后面的语法操作的调用永远不会返回突然的完成，我理解是一定会执行一个预期的结果类型，执行步骤就是 上述 1， 2， 3步骤。 ！ToNumber 描述的是 一定会讲操作数转换为 number 类型并返回 val.[[value]]
 
 - ?前缀  同理， 就不一一展开了，太多「逃」。
 
