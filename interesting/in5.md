@@ -262,7 +262,24 @@ StrUnsignedDecimalLiteral:::
 
 [ECMAScript® 2019 : 11.8.3Numeric Literals](https://tc39.github.io/ecma262/#sec-literals-numeric-literals)
 
-确认过眼神，是我搞不定的人！
+确认过眼神，是我搞不定的人！整个过程大致描述的是
+
+摘录一点我们需要用的：
+
+```s
+...
+DecimalIntegerLiteral::
+0
+NonZeroDigitDecimalDigitsopt
+```
+
+1. 如果字符串中只包含数字（包括前面带加号或负号的情况），则将其转换为十进制数值，即"1"会变成1，"123"会变成123，而"011"会变成11（注意：前导的零被忽略了）；
+2. 如果字符串中包含有效的浮点格式，如"1.1"，则将其转换为对应的浮点数值（同样，也会忽略前导零）；
+3. 如果字符串中包含有效的十六进制格式，例如"0xf"，则将其转换为相同大小的十进制整数值；
+4. 什么八进制二进制同上；
+5. 如果字符串是空的（不包含任何字符），则将其转换为0；
+6. 如果字符串中包含除上述格式之外的字符，则将其转换为NaN。
+
 
 不过我们还有 Mozilla : [Number("")      // 0](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Number#%E8%BD%AC%E6%8D%A2%E6%95%B0%E5%AD%97%E5%AD%97%E7%AC%A6%E4%B8%B2%E4%B8%BA%E6%95%B0%E5%AD%97)
 
