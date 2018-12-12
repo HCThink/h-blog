@@ -49,7 +49,7 @@
 
 而此题中出现了两个操作符： 「！」， 「==」， 查表可知， 逻辑非优先级是 16， 而等号优先级是 10， 可见先执行 `![]` 操作。在此之前我们先看看 逻辑非
 
-#### 逻辑非 ！
+### 逻辑非 ！
 
 [mozilla 逻辑非： !](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Logical_Operators)
 
@@ -61,7 +61,7 @@
 - 如果expr能转换为false，则返回true。
 
 
-#### 转 bool
+### 转 bool
 
 js 中能够转换为false的字面量是可枚举的，包含
 
@@ -77,7 +77,7 @@ js 中能够转换为false的字面量是可枚举的，包含
 > 于是乎我们将问题转化为： `[] == false`
 
 
-#### == 运算符
+### == 运算符
 
 这是个劲爆的操作符，正经功能没有，自带隐式类型转换经常令人对 js 刮目相看， 实际上现在网上也没有对这个操作符转换规则描述比较好的，这个时候我们就需要去 ECMAscript 上去找找标准了。
 
@@ -101,7 +101,7 @@ js 中能够转换为false的字面量是可枚举的，包含
 
 得到： `[] == !ToNumber(false)`
 
-#### ToNumber
+### ToNumber
 
 [ECMAScript® 2019 : 7.1.3ToNumber](https://tc39.github.io/ecma262/#sec-tonumber)
 
@@ -114,7 +114,7 @@ js 中能够转换为false的字面量是可枚举的，包含
 然后依据规范 8 9， 执行 `ToPrimitive([])`
 
 
-#### ToPrimitive
+### ToPrimitive
 
 [ECMAScript® 2019 : 7.1.1ToPrimitive ( input [ , PreferredType ] )](https://tc39.github.io/ecma262/#sec-toprimitive)
 
@@ -143,7 +143,7 @@ If an object is capable of converting to more than one primitive type, it may us
 2. Let O be ? ToObject(V).
 3. Return ? O.[[Get]](P, V).
 
-#### [[Get]]
+### [[Get]]
 
 [ECMAScript® 2019 : 9.1.8[[Get]] ( P, Receiver )](https://tc39.github.io/ecma262/#sec-ordinary-object-internal-methods-and-internal-slots-get-p-receiver)
 
@@ -151,7 +151,7 @@ Return the value of the property whose key is propertyKey from this object[检�
 
 然后 ToPrimitive step 7 返回 `OrdinaryToPrimitive(input, hint)`
 
-#### OrdinaryToPrimitive( O, hint )
+### OrdinaryToPrimitive( O, hint )
 
 [ECMAScript® 2019 : 7.1.1.1OrdinaryToPrimitive ( O, hint )](https://tc39.github.io/ecma262/#sec-ordinarytoprimitive)
 
@@ -172,7 +172,7 @@ Return the value of the property whose key is propertyKey from this object[检�
 
 步骤 5，则是依次处理放入 methodNames 的操作[这也解答了我一直以来的一个疑问，网上也有说对象转 string 的时候，是调用 tostring 和 valueof， 但是总是含糊其辞，哪个先调用，哪个后调用，以及是不是两个方法都会调用等问题总是模棱两可，一句带过 /手动狗头]。
 
-#### 推论
+### 推论
 
 该了解的基本上都梳理出来了， 说实话，非常累，压着没有每个名词都去发散。不过大致需要的环节都有了.
 
@@ -184,7 +184,7 @@ Return the value of the property whose key is propertyKey from this object[检�
 
 结果是没有，啪啪打脸啊，尼玛，于是乎我们看 Object.prototype.valueOf
 
-#### Array.prototype.valueOf from Object.prototype.valueOf
+### Array.prototype.valueOf from Object.prototype.valueOf
 
 [ECMAScript® 2019 : 19.1.3.7Object.prototype.valueOf ( )](https://tc39.github.io/ecma262/#sec-object.prototype.valueof)
 
@@ -195,7 +195,7 @@ This function is the %ObjProto_valueOf% intrinsic object.
 
 我们接着看 ToObject【抓狂，但是要坚持】。
 
-#### ToObject
+### ToObject
 
 [ECMAScript® 2019 : 7.1.13ToObject ( argument )](https://tc39.github.io/ecma262/#table-13)
 
@@ -203,7 +203,7 @@ This function is the %ObjProto_valueOf% intrinsic object.
 
 Object ： Return argument?!  这步算是白走了。我们接着看 toString，同样的我们要考虑覆写的问题。
 
-#### Array.prototype.toString()
+### Array.prototype.toString()
 
 [ECMAScript® 2019 : 22.1.3.28Array.prototype.toString ( )](https://tc39.github.io/ecma262/#sec-array.prototype.tostring)
 
@@ -227,7 +227,7 @@ __如果你也认真看到这一步，不妨在博客提个 issue 留下联系�
 
 可见 '' 需要 ToNumber, 我们在上面讲述了 [ToNumber](#ToNumber) 以及转换映射表, 表格里说的很清楚『 String	See grammar and conversion algorithm below. 』....
 
-#### ToNumber Applied to the String Type
+### ToNumber Applied to the String Type
 
 [ECMAScript® 2019 : 7.1.3.1ToNumber Applied to the String Type](https://tc39.github.io/ecma262/#sec-tonumber-applied-to-the-string-type)
 
@@ -307,9 +307,7 @@ __哦，大哥，原来这 tm 就是惊喜啊！小弟我愿意... 愿意个鬼�
 
 ## 花絮
 
-### ！ToNumber / ? ToNumber
-
-- ！前缀
+### ！ToNumber: ！前缀
 
 [ECMAScript® 2019 : 5.2.3.4 ReturnIfAbrupt Shorthands](https://tc39.github.io/ecma262/#sec-returnifabrupt-shorthands)
 
@@ -327,7 +325,9 @@ Syntax-directed operations for runtime semantics make use of this shorthand by p
 
 大意是： !后面的语法操作的调用永远不会返回突然的完成，我理解是一定会执行一个预期的结果类型，执行步骤就是 上述 1， 2， 3步骤。 ！ToNumber 描述的是 一定会讲操作数转换为 number 类型并返回 val.[[value]]
 
-- ?前缀  同理， 就不一一展开了，太多「逃」。
+### ? ToNumber: ? 前缀
+
+同理自己看规范， 就不一一展开了，太多「逃」。
 
 [ECMAScript® 2019 : 5.2.3.4 ReturnIfAbrupt Shorthands](https://tc39.github.io/ecma262/#sec-returnifabrupt-shorthands)
 
