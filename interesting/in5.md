@@ -262,8 +262,6 @@ StrUnsignedDecimalLiteral:::
 
 [ECMAScript® 2019 : 11.8.3Numeric Literals](https://tc39.github.io/ecma262/#sec-literals-numeric-literals)
 
-确认过眼神，是我搞不定的人！整个过程大致描述的是
-
 摘录一点我们需要用的：
 
 ```s
@@ -272,6 +270,8 @@ DecimalIntegerLiteral::
 0
 NonZeroDigitDecimalDigitsopt
 ```
+
+确认过眼神，是我搞不定的人！整个过程大致描述的是
 
 1. 如果字符串中只包含数字（包括前面带加号或负号的情况），则将其转换为十进制数值，即"1"会变成1，"123"会变成123，而"011"会变成11（注意：前导的零被忽略了）；
 2. 如果字符串中包含有效的浮点格式，如"1.1"，则将其转换为对应的浮点数值（同样，也会忽略前导零）；

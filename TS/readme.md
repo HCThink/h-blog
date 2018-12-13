@@ -1,5 +1,7 @@
 # TypeScript
 
+> deno, angular/vue 高版本 ，白鹭... 越来越多的框架爱上 TS
+
 🌀 高级特性：
 - 类型, 高级类型
 - 类型推断，类型兼容
@@ -15,18 +17,18 @@
 - mixins
 - jsx
 
-### [base](./base.md)
+### [TS 基础部分： 类型，解构，声明...](./base.md)
 
-### [interface](./interface.md)
+### [TS 接口 interface](./interface.md)
 
-### [class](./class.md)
+### [TS class](./class.md)
 
 ### [__综合使用案例__](./code/polymorphism/src/)
 
 - [目录](./code/polymorphism/src/)
 - [入口](./code/polymorphism/src/main.ts)
 
-### [function](./function.md)
+### [TS function](./function.md)
 
 ### [泛型](./Generics.md)
 
