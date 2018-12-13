@@ -7,7 +7,7 @@
 
 > package.json
 
-- https://www.cnblogs.com/tzyy/p/5193811.html
+- [package.json]https://www.cnblogs.com/tzyy/p/5193811.html
 
 > koa
 
@@ -17,9 +17,14 @@
 
 ## JS
 
-- https://github.com/Jocs/jocs.github.io/issues/12
-- [荐]https://blog.csdn.net/shenlei19911210/article/details/61194617
+- [ES6 Generator函数实现协同程序](https://github.com/Jocs/jocs.github.io/issues/12)
+- [荐 协程(Coroutine)-ES中关于Generator/async/await的学习思考](https://blog.csdn.net/shenlei19911210/article/details/61194617)
 
+
+## 工具
+
+- [git 学习工具](https://learngitbranching.js.org/?demo)
+- [chrome 调试相关（是一个系列）](https://juejin.im/post/5c0ee12551882545e24ef291?utm_source=gold_browser_extension)
 
 ## 奇思妙想
 
