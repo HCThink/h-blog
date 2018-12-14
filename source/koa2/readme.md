@@ -212,6 +212,8 @@ koa2 的源码工程结构非常简洁，一目了然, 没有花里胡哨的东�
 
 ### 源码
 
+__所有源码分析均以「注释」的方式提供在如下源码文件中【私以为这么做相对好一些，有更好的方式欢迎告知】__
+
 - [application.js](./koa2/lib/application.js)
   application.js 是 koa 的入口，继承了events , 所以框架有事件监听和事件触发的能力。application 还暴露了一些常用的api，比如toJSON、listen、use等等。
 - [context.js](./koa2/lib/context.js)

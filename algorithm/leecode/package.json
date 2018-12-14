@@ -1,0 +1,15 @@
+{
+  "name": "leecode",
+  "version": "1.0.0",
+  "description": "> 共计 ${data.t1} 题【已实现】",
+  "main": "lee1.js",
+  "scripts": {
+    "build": "node ./shell.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "string-template": "^1.0.0"
+  }
+}

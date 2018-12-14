@@ -97,6 +97,8 @@ console.log(obj.a, obj.main.a, obj.b, obj.c === obj.main.c);
 
 ## 源码分析
 
+__所有源码分析均以「注释」的方式提供在如下源码文件中【私以为这么做相对好一些，有更好的方式欢迎告知】__
+
 源码参考：[delegates.js source](./index.js)
 
 

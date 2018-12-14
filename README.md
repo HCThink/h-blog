@@ -58,9 +58,9 @@ __PS：如有问题，或者错误，欢迎提 ISSUE ，共同成长__
 - [深度解析 [] == ![]，从 ECMAScript 规范说起](./interesting/in5.md)
 - [如何使 (aﾠ==1 && a== 2 && ﾠa==3) 返回 true](./interesting/in1.md)
 
-- [巧用异步事件队列](./in2.md)
-- [n 道 JavaScript 难题](./in3.md)
-- [JS 中经常使用的小技巧，更简短的实现(长期更新)](./in4.md)
+- [巧用异步事件队列](./interesting/in2.md)
+- [n 道 JavaScript 难题](./interesting/in3.md)
+- [JS 中经常使用的小技巧，更简短的实现(长期更新)](./interesting/in4.md)
 
 
 
@@ -87,6 +87,14 @@ __PS：如有问题，或者错误，欢迎提 ISSUE ，共同成长__
 > 不设边界，前端也要精通算法
 
 - [leecode 算法 js 版本](./algorithm/leecode/readme.md)
+    |  |  |  |  |  |  |
+    | ------ | ------ | ------ | ------ | ------ | ------ |
+    | [lee1.js](./lee1.js) | [lee2.js](./lee2.js) | [lee7.js](./lee7.js) | [lee9.js](./lee9.js) | [lee14.js](./lee14.js) | [lee27.js](./lee27.js) |
+    | [lee28.js](./lee28.js) | [lee35.js](./lee35.js) | [lee118.js](./lee118.js) | [lee119.js](./lee119.js) | [lee136.js](./lee136.js) | [lee169.js](./lee169.js) |
+    | [lee189.js](./lee189.js) | [lee190.js](./lee190.js) | [lee191.js](./lee191.js) | [lee231.js](./lee231.js) | [lee258.js](./lee258.js) | [lee268.js](./lee268.js) |
+    | [lee326.js](./lee326.js) | [lee371.js](./lee371.js) | [lee389.js](./lee389.js) | [lee461.js](./lee461.js) | [lee485.js](./lee485.js) | [lee560.js](./lee560.js) |
+    | [lee605.js](./lee605.js) | [lee657.js](./lee657.js) | [lee709.js](./lee709.js) | [lee728.js](./lee728.js) | [lee771.js](./lee771.js) | [lee896.js](./lee896.js) |
+    | [lee905.js](./lee905.js) | [lee929.js](./lee929.js)
 
 
 
@@ -94,18 +102,20 @@ __PS：如有问题，或者错误，欢迎提 ISSUE ，共同成长__
 
 > 读书破万卷
 
-- [package.json 全解析](https://www.cnblogs.com/tzyy/p/5193811.html)
+- [package.json 全解析](https://www.cnblogs.com/tzyy/p/5193811.html?from=https://github.com/HCThink/h-blog)
 
-- [Koa2进阶学习笔记](https://github.com/chenshenhai/koa2-note)
-- [基于Koa2搭建Node.js实战项目教程](https://github.com/ikcamp/koa2-tutorial)
+- [js 中实用小技巧](https://segmentfault.com/a/1190000012405845?from=https://github.com/HCThink/h-blog)
 
-- [ES6 Generator函数实现协同程序](https://github.com/Jocs/jocs.github.io/issues/12)
-- [荐 协程(Coroutine)-ES中关于Generator/async/await的学习思考](https://blog.csdn.net/shenlei19911210/article/details/61194617)
+- [Koa2进阶学习笔记](https://github.com/chenshenhai/koa2-note?from=https://github.com/HCThink/h-blog)
+- [基于Koa2搭建Node.js实战项目教程](https://github.com/ikcamp/koa2-tutorial?from=https://github.com/HCThink/h-blog)
 
-- [git 学习工具](https://learngitbranching.js.org/?demo)
-- [chrome 调试相关（系列）](https://juejin.im/post/5c0ee12551882545e24ef291?utm_source=gold_browser_extension)
+- [ES6 Generator函数实现协同程序](https://github.com/Jocs/jocs.github.io/issues/12?from=https://github.com/HCThink/h-blog)
+- [荐 协程(Coroutine)-ES中关于Generator/async/await的学习思考](https://blog.csdn.net/shenlei19911210/article/details/61194617?from=https://github.com/HCThink/h-blog)
 
-- [奇思妙想： the e](https://github.com/eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee/eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee/blob/eeeeeeeeeeeeeeeeeeeeeeee/e.py)
+- [git 学习工具](https://learngitbranching.js.org/?demo&from=https://github.com/HCThink/h-blog)
+- [chrome 调试相关（系列）](https://juejin.im/post/5c0ee12551882545e24ef291?utm_source=gold_browser_extension&from=https://github.com/HCThink/h-blog)
+
+- [奇思妙想： the e](https://github.com/eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee/eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee/blob/eeeeeeeeeeeeeeeeeeeeeeee/e.py?from=https://github.com/HCThink/h-blog)
 
 
 

@@ -1,5 +1,6 @@
 const fs = require('fs');
 const path = require('path');
+const stringTemplate = require('string-template');
 
 /**
  *
@@ -47,19 +48,34 @@ function filter (list = []) {
 
 const BASE_PATH = path.resolve('./');
 const OUT_FILE = path.resolve('./readme.md');
- const context = '# Leecode';
+const DEFAULT_CONTEXT = [
+    '# Leecode\n\n',
+    '> 共计 {count} 题【已实现】\n\n'
+];
+
+const DEFAULT_TABLE_length = 6;
+const DEFAULT_TABLE = [
+    '|  |  |  |  |  |  |\n',
+    '| ------ | ------ | ------ | ------ | ------ | ------ |\n',
+];
 
 async function genReadmeMd () {
     const fileList = await fs.readdirPromise(BASE_PATH);
     const filterList = filter(fileList);
 
-    const writeList = filterList.map((item) => {
-        return `- [${item}](./${item})`
+    const writeList = filterList.map((item, index) => {
+        let col = `| [${item}](./${item}) `;
+        if ((index + 1) % DEFAULT_TABLE_length === 0) {
+            col = col + '|\n';
+        }
+        return col;
     });
 
-    writeList.unshift(context, `\n> 共计 ${writeList.length} 题【已实现】`, '\n');
+    writeList.unshift(...DEFAULT_CONTEXT.map((item) => stringTemplate(item, {
+        count: writeList.length
+    })) , ...DEFAULT_TABLE);
 
-    await fs.writeFilePromise(OUT_FILE, writeList.join('\n'));
+    await fs.writeFilePromise(OUT_FILE, writeList.join(''));
 
     return [fileList, filterList];
 }
