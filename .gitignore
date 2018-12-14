@@ -75,6 +75,7 @@ js/syncAndAsync/thunk/
 js/type/
 node/
 source/RXJS/
+source/jquery/
 source/Ramdajs/
 source/co/
 source/koa2/code/koa-router/
@@ -82,3 +83,5 @@ source/koa2/middleware/koa-router/
 source/module/
 source/reflect-metadata/
 source/regenerator/
+
+design/programming-paradigm/
