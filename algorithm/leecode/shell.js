@@ -46,13 +46,15 @@ function filter (list = []) {
     }).sort(sortFn);
 }
 
-const BASE_PATH = path.resolve('./');
+const BASE_PATH = './';
+const ROOT_PATH = './algorithm/leecode/';
 const OUT_FILE = path.resolve('./readme.md');
 const DEFAULT_CONTEXT = [
     '# Leecode\n\n',
     '> 共计 {count} 题【已实现】\n\n'
 ];
 
+const ROOT_TABLE_DESC = '\n\n';
 const DEFAULT_TABLE_length = 6;
 const DEFAULT_TABLE = [
     '|  |  |  |  |  |  |\n',
@@ -60,22 +62,30 @@ const DEFAULT_TABLE = [
 ];
 
 async function genReadmeMd () {
-    const fileList = await fs.readdirPromise(BASE_PATH);
+    const fileList = await fs.readdirPromise(path.resolve(BASE_PATH));
     const filterList = filter(fileList);
 
-    const writeList = filterList.map((item, index) => {
-        let col = `| [${item}](./${item}) `;
+    const baseList = [];
+    const rootList = [];
+
+    filterList.forEach((item, index) => {
+        let baseRow = `| [${item}](${BASE_PATH}${item}) `;
+        let rootRow = `| [${item}](${ROOT_PATH}${item}) `;
         if ((index + 1) % DEFAULT_TABLE_length === 0) {
-            col = col + '|\n';
+            baseRow = baseRow + '|\n';
+            rootRow = rootRow + '|\n';
         }
-        return col;
+        baseList.push(baseRow);
+        rootList.push(rootRow);
     });
 
-    writeList.unshift(...DEFAULT_CONTEXT.map((item) => stringTemplate(item, {
-        count: writeList.length
+    baseList.unshift(...DEFAULT_CONTEXT.map((item) => stringTemplate(item, {
+        count: baseList.length
     })) , ...DEFAULT_TABLE);
+    rootList.unshift(...DEFAULT_TABLE);
+    const allList = baseList.concat(ROOT_TABLE_DESC, rootList);
 
-    await fs.writeFilePromise(OUT_FILE, writeList.join(''));
+    await fs.writeFilePromise(OUT_FILE, allList.join(''));
 
     return [fileList, filterList];
 }

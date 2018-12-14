@@ -90,12 +90,12 @@ __PS：如有问题，或者错误，欢迎提 ISSUE ，共同成长__
 
 |  |  |  |  |  |  |
 | ------ | ------ | ------ | ------ | ------ | ------ |
-| [lee1.js](./lee1.js) | [lee2.js](./lee2.js) | [lee7.js](./lee7.js) | [lee9.js](./lee9.js) | [lee14.js](./lee14.js) | [lee27.js](./lee27.js) |
-| [lee28.js](./lee28.js) | [lee35.js](./lee35.js) | [lee118.js](./lee118.js) | [lee119.js](./lee119.js) | [lee136.js](./lee136.js) | [lee169.js](./lee169.js) |
-| [lee189.js](./lee189.js) | [lee190.js](./lee190.js) | [lee191.js](./lee191.js) | [lee231.js](./lee231.js) | [lee258.js](./lee258.js) | [lee268.js](./lee268.js) |
-| [lee326.js](./lee326.js) | [lee371.js](./lee371.js) | [lee389.js](./lee389.js) | [lee461.js](./lee461.js) | [lee485.js](./lee485.js) | [lee560.js](./lee560.js) |
-| [lee605.js](./lee605.js) | [lee657.js](./lee657.js) | [lee709.js](./lee709.js) | [lee728.js](./lee728.js) | [lee771.js](./lee771.js) | [lee896.js](./lee896.js) |
-| [lee905.js](./lee905.js) | [lee929.js](./lee929.js)
+| [lee1.js](./algorithm/leecode/lee1.js) | [lee2.js](./algorithm/leecode/lee2.js) | [lee7.js](./algorithm/leecode/lee7.js) | [lee9.js](./algorithm/leecode/lee9.js) | [lee14.js](./algorithm/leecode/lee14.js) | [lee27.js](./algorithm/leecode/lee27.js) |
+| [lee28.js](./algorithm/leecode/lee28.js) | [lee35.js](./algorithm/leecode/lee35.js) | [lee118.js](./algorithm/leecode/lee118.js) | [lee119.js](./algorithm/leecode/lee119.js) | [lee136.js](./algorithm/leecode/lee136.js) | [lee169.js](./algorithm/leecode/lee169.js) |
+| [lee189.js](./algorithm/leecode/lee189.js) | [lee190.js](./algorithm/leecode/lee190.js) | [lee191.js](./algorithm/leecode/lee191.js) | [lee231.js](./algorithm/leecode/lee231.js) | [lee258.js](./algorithm/leecode/lee258.js) | [lee268.js](./algorithm/leecode/lee268.js) |
+| [lee326.js](./algorithm/leecode/lee326.js) | [lee371.js](./algorithm/leecode/lee371.js) | [lee389.js](./algorithm/leecode/lee389.js) | [lee461.js](./algorithm/leecode/lee461.js) | [lee485.js](./algorithm/leecode/lee485.js) | [lee560.js](./algorithm/leecode/lee560.js) |
+| [lee605.js](./algorithm/leecode/lee605.js) | [lee657.js](./algorithm/leecode/lee657.js) | [lee709.js](./algorithm/leecode/lee709.js) | [lee728.js](./algorithm/leecode/lee728.js) | [lee771.js](./algorithm/leecode/lee771.js) | [lee896.js](./algorithm/leecode/lee896.js) |
+| [lee905.js](./algorithm/leecode/lee905.js) | [lee929.js](./algorithm/leecode/lee929.js)
 
 
 
