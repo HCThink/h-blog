@@ -103,9 +103,17 @@ __PS：如有问题，或者错误，欢迎提 ISSUE ，共同成长__
 
 > 读书破万卷
 
+- [前端收藏夹](http://collect.w3ctrain.com/)
+- [小胡子哥](http://www.barretlee.com/)
+- [穆乙](http://www.cnblogs.com/pigtail/)
+- [haorooms](https://www.haorooms.com/)
+
 - [package.json 全解析](https://www.cnblogs.com/tzyy/p/5193811.html?from=https://github.com/HCThink/h-blog)
 
+- [编写高质量代码：改善JavaScript程序的188个建议](https://book.2cto.com/201211/9239.html)
+- [js函数式编程指南](https://llh911001.gitbooks.io/mostly-adequate-guide-chinese/content/ch4.html#不仅仅是双关语咖喱)
 - [js 中实用小技巧](https://segmentfault.com/a/1190000012405845?from=https://github.com/HCThink/h-blog)
+- [0.1 + 0.2 = ?](http://www.cnblogs.com/hustskyking/p/ieee754-operation-in-js.html)
 
 - [Koa2进阶学习笔记](https://github.com/chenshenhai/koa2-note?from=https://github.com/HCThink/h-blog)
 - [基于Koa2搭建Node.js实战项目教程](https://github.com/ikcamp/koa2-tutorial?from=https://github.com/HCThink/h-blog)
@@ -118,8 +126,7 @@ __PS：如有问题，或者错误，欢迎提 ISSUE ，共同成长__
 
 - [奇思妙想： the e](https://github.com/eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee/eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee/blob/eeeeeeeeeeeeeeeeeeeeeeee/e.py?from=https://github.com/HCThink/h-blog)
 
-
-
+- [λ演算](http://www.jianshu.com/p/e7db2f50b012)
 
 ### 开源[敬请期待]
 

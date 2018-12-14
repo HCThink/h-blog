@@ -1,13 +1,13 @@
-# How to do
+# 1. How to do
 
 
-### 快速获取毫秒数
+## 1.1. 快速获取毫秒数
 
 ```js
 const now = +new Date();
 ```
 
-### 平铺多维数组
+## 1.2. 平铺多维数组
 
 ```js
 // 仅仅适用于二维数组。不过，通过递归，我们可以平铺任意维度的嵌套数组。
@@ -40,7 +40,7 @@ Arr.join().split(',').map(fn)
 
 仅仅是另一种思路。
 
-### 快速取整
+## 1.3. 快速取整
 
 ```js
 // api
@@ -58,7 +58,7 @@ console.log(~~null) // -> 0
 console.log(~~(2147483647 + 1) === (2147483647 + 1)) // -> 0
 ```
 
-### 格式化输出
+## 1.4. 格式化输出
 
 ```js
 const obj = {
@@ -83,7 +83,7 @@ JSON.stringify(obj, null, 4);
 // }"
 ```
 
-### 大致测试一个JavaScript代码块性能的技巧
+## 1.5. 大致测试一个JavaScript代码块性能的技巧
 
 ```js
 console.time("Array initialize");
@@ -95,7 +95,9 @@ for (let i = 0; i < len; i++) {
 console.timeEnd("Array initialize");
 ```
 
-### 您可以创建一个 100％ 纯对象，它不会从 Object 继承任何属性或方法（例如，constructor，toString() 等）
+## 1.6. 您可以创建一个 100％ 纯对象
+
+> 它不会从 Object 继承任何属性或方法（例如，constructor，toString() 等）
 
 ```js
 const pureObject = Object.create(null);
@@ -105,7 +107,7 @@ console.log(pureObject.toString); //=> undefined
 console.log(pureObject.hasOwnProperty); //=> undefined
 ```
 
-### 普通必传参数校验
+## 1.7. 普通必传参数校验
 
 ```js
 const require = function( message ){
@@ -116,7 +118,7 @@ getSum( 10 ) // throws Error, b is not defined
 getSum( undefined, 10 ) // throws Error, a is not defined
 ```
 
-### 装饰器用作必传参数校验
+## 1.8. 装饰器用作必传参数校验
 
 如下为主要代码， 完整代码需要 Typescript 环境。
 
@@ -137,7 +139,7 @@ greet(p1, p2, p3, @required name: string, p5) {
 // Greeter.greet[ Greeter.prototype.greet ] 第 4 个参数是必传参数，请提供。
 ```
 
-### 解构 arguments 转数组
+## 1.9. 解构 arguments 转数组
 
 ```js
 +function fn() {
@@ -146,7 +148,7 @@ greet(p1, p2, p3, @required name: string, p5) {
 }(1,2,3,4)
 ```
 
-### 库的非 new 调用
+## 1.10. 库的非 new 调用
 
 通常库遇到的问题往往是，用户不按照你想要的方式调用，特别是 new 的问题，很多代码中会存在一谢逻辑去校验用户是否是 new 调用。诸如：
 
@@ -193,11 +195,32 @@ class A {
 new A();        // A
 ```
 
-### 取巧类型转换
+## 1.11. 交换两个数
+
+1. 引入一个变量
+2. `[x, y] = [y, x];`
+
+3. 和差法
+```js
+a = a + b;
+b = a - b;
+a = a - b;
+```
+
+4. 异或: `a^b^b=a`
+```js
+a = a ^ b;
+b = a ^ b;
+a = a ^ b;
+```
+
+
+## 1.12. 取巧类型转换
 
 
 ```js
-~~2.8           // 2               小数取整
+~~2.8           // 2               巧用位运算： 小数取整
+3.86 | 0        // 2               巧用位运算： 小数取整
 !!0             // false           转 bool
 + '123'         // 123             string -> number
 
@@ -228,7 +251,8 @@ new A();        // A
 > 按位取反的快捷运算公式 -(x+1). 【~~x -> -( -(x + 1) + 1) -> -( -x - 1 + 1) -> --x -> x】
 
 
-### 参考 & 感谢
+## 1.13. 参考 & 感谢
 
 - http://www.css88.com/archives/9868
 - https://www.jb51.net/article/78670.htm
+- https://segmentfault.com/a/1190000012405845
