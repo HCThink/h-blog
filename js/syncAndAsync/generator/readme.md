@@ -413,7 +413,9 @@ fibersCo(() => {
 
 ### generator & 异步
 
-1. generator 处理异步
+1. generator 流程控制 和 异步处理
+
+generator yield 的执行机制在流程控制上，有这其他语法无可比拟的优势。
 
 generator 机制和异步有所不同， Generator 和普通函数本质区别在于 Generator 能让一段程序执行到指定的位置,然后交出执行栈，调用下次 next 的时候又会从之前中断的位置继续开始执行，配合这种机制处理异步，则会产生同步化异步处理的效果。
 
