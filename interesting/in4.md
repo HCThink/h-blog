@@ -4,7 +4,10 @@
 ## 1.1. 快速获取毫秒数
 
 ```js
-const now = +new Date();
+let now = +new Date();
+// or   谢 @麦当苗儿[zuojiazi]
+// 该方法在 ECMA-262 第五版中被标准化, 存在一些兼容问题 IE9+
+now = Date.now()
 ```
 
 ## 1.2. 平铺多维数组
