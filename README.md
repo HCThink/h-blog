@@ -117,7 +117,7 @@ __PS：如有问题，或者错误，欢迎提 ISSUE ，共同成长__
 | angular | MVVM 框架 | [git](https://github.com/angular/angular),[官网](https://angular.io)  | 优秀现代框架 | star 4.3W | 谷歌维护 | angular [1](https://github.com/jmcunningham/AngularJS-Learning), [2](https://github.com/jmcunningham/AngularJS2-Learning)  |
 | create react app | react 脚手架 | [github](https://github.com/facebook/create-react-app) |  | star 6W+ | facebook | |
 | commander | node命令行开发利器 | [github](https://github.com/tj/commander.js) | 简单好用 | star 1W+ | TJ 出品 | |
-| antd | ui 库 | [github](https://github.com/tj/commander.js) | 全，稳 | star 3.7W+ | 蚂蚁金服 | |
+| antd | ui 库 | [github](https://github.com/tj/commander.js) | 全，稳 | star 3.7W+ | 蚂蚁金服 | |
 | axios | http client | [github](https://github.com/axios/axios) | 强大 | star 5.2W | | |
 | nodebestpractices | node 最佳实践 | [github](https://github.com/i0natan/nodebestpractices) | 实践检验 | star 2W | | |
 
@@ -127,14 +127,14 @@ __PS：如有问题，或者错误，欢迎提 ISSUE ，共同成长__
 | 名称 | 简述 | github | 优势 | 社区认可度 | 其他 |
 | ------ | ------ | ------ | ------ | ------ | ------ |
 | deno | 下一代 node | [github](https://github.com/denoland/deno) | 可能是将来 | star 2.8W+ | node 原作者 |
-| koa1/2 | node server 框架 | [github](https://github.com/koajs/koa) | 中间件 | star 2.4W+ | TJ |
+| koa1/2 | node server 框架 | [github](https://github.com/koajs/koa) | 中间件 | star 2.4W+ | TJ |
 | egg | 企业级框架 | [github](https://github.com/eggjs/egg) | 企业级 | star 1.1W+ | 阿里 |
 | standard | Js 代码规范 linter 代码自动格式化 | [github](https://github.com/standard/standard/blob/master/docs/README-zhcn.md) | 开箱即用，无配置 | star 2w |  VScode、Atom 插件 |
-| airbnb/javascript | js 规范 | [github](https://github.com/airbnb/javascript) | 标准 | star 8W | Airbnb |
-| puppeteer | Chrome Node API | [github](https://github.com/GoogleChrome/puppeteer) | 强大 | star 4.2W+ | google |
-| dbb | debugger  | [github](https://github.com/GoogleChromeLabs/ndb) | 强大,实用 | star 8.6k | google |
-| jest | 测试框架 | [github](https://github.com/facebook/jest) | 强大 | star 2.2W+ | facebook |
-| Prepack | js 预执行 | [github](https://github.com/facebook/prepack) | 性能提升 | star 1.3W | facebook |
+| airbnb/javascript | js 规范 | [github](https://github.com/airbnb/javascript) | 标准 | star 8W | Airbnb |
+| puppeteer | Chrome Node API | [github](https://github.com/GoogleChrome/puppeteer) | 强大 | star 4.2W+ | google |
+| dbb | debugger  | [github](https://github.com/GoogleChromeLabs/ndb) | 强大,实用 | star 8.6k | google |
+| jest | 测试框架 | [github](https://github.com/facebook/jest) | 强大 | star 2.2W+ | facebook |
+| Prepack | js 预执行 | [github](https://github.com/facebook/prepack) | 性能提升 | star 1.3W | facebook |
 | taro | 多端统一开发 | [git](https://github.com/NervJS/taro), [官网](https://taro.js.org/) | 多端统一  | star 1.2W | 京东凹凸 |
 
 

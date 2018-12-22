@@ -51,7 +51,7 @@ fs.readFile('/etc/passwd', (err, data) => {
 // fsPromises.readFile(path[, options])
 ```
 
-node 中 io 相关的 api 在设计上是一种有格式的 cps 扩展， 你可能注意到了，node 异步 api 的最后一个参数总是一个 cb，用来接收异步操作的执行结果。
+node 中 io 相关的 api 在设计上是一种有格式的 cps 扩展， 你可能注意到了，node 异步 api 的最后一个参数总是一个 cb，用来接收异步操作的执行结果。
 
 但实际上也有一些区别，原因是这里的 cb 并不承担延迟执行的作用，而是配合 node api 的 event 机制，在类似 `stream.Readable` 的 `end` 事件中, 触发注册的事件 （`emitter.emit(eventName[, ...args])`： 按照监听器注册的顺序，同步地调用每个注册到名为 eventName 的事件的监听器，并传入提供的参数。）
 
@@ -108,7 +108,7 @@ squ(n + 1);
 
 > 思路：将参数表达式替换为一个 thunk 函数，但有个前提： squ 需要 cps 化。
 
-1. cps 化
+1. cps 化
 
 ```js
 const squ = (arg1) => arg1() ** 2
@@ -141,7 +141,7 @@ const re = squ(getArgThunk(n)(() => n + 1));
 - [完整代码参考](./code/thunk.1.js)
 
 
-## js/node 中的 thunk
+## js/node 中的 thunk
 
 ### 处理回调问题
 
@@ -187,7 +187,7 @@ read('package.json', 'utf8')(function(err, str){
 
 实际上要合理看待 thunk 的作用， 原因是他依赖函数 cps 化， 并且是一个函数转化的中间态，通常用于将多参数函数转化为单参数，用于计算机科学，或者一些函数的数学化验证。
 
-- 逻辑延迟
+- 逻辑延迟
 - 执行器，流程控制器【场景特殊： generator】
 
 ### thunk + generator => co3-
