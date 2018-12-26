@@ -1,7 +1,7 @@
 
 # cps thunk
 
-- [1. callback](./readme.md)
+- [1. callback](../callback/readme.md)
 - [2. cps thunk](./readme.md)
 - [3. defer / promise(非 es6)]
 - [4. promise(ES6)]
@@ -113,7 +113,7 @@ squ(n + 1);
 ```js
 const squ = (arg1) => arg1() ** 2
 
-// cps： a(n) => n  转换为 a(n, fn) => fn(n)
+// cps：a(n) => n  转换为 a(n, fn) => fn(n)
 const getArg = (n, fn) => fn(n);
 
 let n = 10;
@@ -178,9 +178,9 @@ read('package.json', 'utf8')(function(err, str){
 
 ## thunkify 源码
 
-1. [tj/node-thunkify](../../../source/thunks/readme.md)
+1. [tj/node-thunkify](../../../source/node-thunkify/readme.md)
 
-2. [thunks](./../../source/node-thunkify/readme.md)
+2. [thunks](../../../source/thunks/readme.md)
 
 
 ## thunk 应用

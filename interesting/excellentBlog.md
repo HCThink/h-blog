@@ -25,6 +25,7 @@
 
 - [chrome 调试相关（系列）](https://juejin.im/post/5c0ee12551882545e24ef291?utm_source=gold_browser_extension&from=https://github.com/HCThink/h-blog)
 
+- [从0开始,5分钟创建一个Spring Boot + Angular/React应用](https://zhuanlan.zhihu.com/p/53182228)
 
 
 ## 系列博客
