@@ -149,7 +149,7 @@ __部门长期招收大量研发岗位【前端，后端，算法】，欢迎各
 
 > 其他
 
-| 名称 | 简述 | github | 优势 | 社区认可度 | 其他 |
+| 名称 | 简述 | github | 社区认可度 | 其他 |
 | ------ | ------ | ------ | ------ | ------ | ------ |
 | vscode | 优秀编辑器 | [github](https://github.com/Microsoft/vscode) | star 6.6w | 微软维护 |
 | Atom | 优秀编辑器 | [github](https://github.com/atom/atom) | star 4.7w | facebook维护 |
