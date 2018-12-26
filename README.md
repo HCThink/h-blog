@@ -117,7 +117,7 @@ __PS：如有问题，或者错误，欢迎提 ISSUE ，共同成长__
 | angular | MVVM 框架 | [git](https://github.com/angular/angular),[官网](https://angular.io)  | 优秀现代框架 | star 4.3W | 谷歌维护 | angular [1](https://github.com/jmcunningham/AngularJS-Learning), [2](https://github.com/jmcunningham/AngularJS2-Learning)  |
 | create react app | react 脚手架 | [github](https://github.com/facebook/create-react-app) |  | star 6W+ | facebook | |
 | commander | node命令行开发利器 | [github](https://github.com/tj/commander.js) | 简单好用 | star 1W+ | TJ 出品 | |
-| antd | ui 库 | [github](https://github.com/tj/commander.js) | 全，稳 | star 3.7W+ | 蚂蚁金服 | |
+| antd | ui 库 | [github](https://github.com/tj/commander.js) | 全，稳 | star 3.7W+ | 蚂蚁金服 | 存在未知彩蛋😂 |
 | axios | http client | [github](https://github.com/axios/axios) | 强大 | star 5.2W | | |
 | nodebestpractices | node 最佳实践 | [github](https://github.com/i0natan/nodebestpractices) | 实践检验 | star 2W | | |
 
