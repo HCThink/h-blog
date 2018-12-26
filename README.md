@@ -144,13 +144,13 @@ __部门长期招收大量研发岗位【前端，后端，算法】，欢迎各
 | dbb | debugger  | [github](https://github.com/GoogleChromeLabs/ndb) | star 8.6k | google |
 | jest | 测试框架 | [github](https://github.com/facebook/jest) | star 2.2W+ | facebook |
 | Prepack | js 预执行 | [github](https://github.com/facebook/prepack) | star 1.3W | facebook |
-| taro | 多端统一开发 | [git](https://github.com/NervJS/taro), [官网](https://taro.js.org/) | star 1.2W | 京东凹凸 |
+| taro | 多端统一开发 | [git](https://github.com/NervJS/taro), [官网](https://taro.js.org/) | star 1.2W | 京东凹凸实验室 |
 
 
 > 其他
 
 | 名称 | 简述 | github | 社区认可度 | 其他 |
-| ------ | ------ | ------ | ------ | ------ | ------ |
+| ------ | ------ | ------ | ------ | ------ |
 | vscode | 优秀编辑器 | [github](https://github.com/Microsoft/vscode) | star 6.6w | 微软维护 |
 | Atom | 优秀编辑器 | [github](https://github.com/atom/atom) | star 4.7w | facebook维护 |
 | nvm | node 版本管理 | [github](https://github.com/creationix/nvm) | star 3.1w | 沙箱隔离 |
