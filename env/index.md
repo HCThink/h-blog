@@ -1,4 +1,4 @@
-# 环境配置
+# 个人环境配置
 
 ## 开发环境
 
@@ -20,3 +20,12 @@
 ## git 
 
 - https://github.com/GitAlias/gitalias
+
+
+---
+
+# 基础服务配置
+
+## npm 私服
+
+- https://github.com/verdaccio/verdaccio
