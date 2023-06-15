@@ -27,6 +27,8 @@
 
 - [从0开始,5分钟创建一个Spring Boot + Angular/React应用](https://zhuanlan.zhihu.com/p/53182228)
 
+- [ESM and commonjs](https://mp.weixin.qq.com/s/WFHUPPuJrW3JJXUm8CTJPQ)
+
 
 ## 系列博客
 
